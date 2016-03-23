@@ -1,0 +1,6 @@
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\bin\TypeScriptHTMLApp1.dll.config
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\bin\TypeScriptHTMLApp1.dll
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\bin\TypeScriptHTMLApp1.pdb
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.dll
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.pdb

@@ -7,3 +7,6 @@ c:\users\administrator\documents\visual studio 2013\Projects\Movefiles\Movefiles
 c:\users\administrator\documents\visual studio 2013\Projects\Movefiles\Movefiles\obj\Debug\Movefiles.exe
 c:\users\administrator\documents\visual studio 2013\Projects\Movefiles\Movefiles\obj\Debug\Movefiles.pdb
 c:\users\administrator\documents\visual studio 2013\Projects\Movefiles\Movefiles\obj\Debug\Movefiles.form_1.resources
+F:\workspace\Ctest\c-learn\Movefiles\Movefiles\bin\Debug\Movefiles.exe.config
+F:\workspace\Ctest\c-learn\Movefiles\Movefiles\obj\Debug\Movefiles.exe
+F:\workspace\Ctest\c-learn\Movefiles\Movefiles\obj\Debug\Movefiles.pdb
