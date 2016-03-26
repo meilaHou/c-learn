@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Movefiles
+namespace utils
 {
-    class SimpleFileCopy
+    class SimpleFileCopy : utils.ISimpleFileCopy
     {
-        public void simpleFileCopys()
+        public void simpleFileCopy()
         {
           //  string fileName = "test.txt";
            
@@ -66,12 +66,12 @@ namespace Movefiles
         {
             traverseTree(sourespath, targetpath, writefilename);
         }
+        delegate void nihao();
         private void traverseTree(string sourespath, string targetpath,Func<string,string> writefilename)
         {
             // Data structure to hold names of subfolders to be
             // examined for files.
             Stack<string> dirs = new Stack<string>(20);
-
             if (!System.IO.Directory.Exists(sourespath))
             {
                 throw new ArgumentException();
