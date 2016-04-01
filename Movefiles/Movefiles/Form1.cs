@@ -15,19 +15,8 @@ namespace Movefiles
         public form_1()
         {
             InitializeComponent();
-            List<string> paths = filecopy.readPath(paths_txt.Text);
-            for(int i  = 0;i<paths.Count;i++)
-            {
-                if(i%2==0)
-                {
-                    this.res_txt.Text = paths[i];
-                }
-                else
-                {
-                    this.target_txt.Text = paths[i];
-                }
-            }
             drawPanel();
+<<<<<<< HEAD
            // testArr();
             TestArr testarr = new TestArr();
             testarr.testArr();
@@ -35,6 +24,19 @@ namespace Movefiles
         }
 
         private void temp()
+=======
+            testxuni();
+        }
+
+        private void testxuni()
+        {
+            Childcls child = new Childcls();
+            child.func1(0);
+        }
+
+        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+>>>>>>> 62c80edfa9b74d7e18a223031d1a20a05725fc6e
         {
             TestCls.Person person;
             person.Age = 12;
