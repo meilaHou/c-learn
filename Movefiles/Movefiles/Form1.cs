@@ -15,17 +15,20 @@ namespace Movefiles
         public form_1()
         {
             InitializeComponent();
-            drawPanel();
-<<<<<<< HEAD
+           // drawPanel();
+
            // testArr();
             TestArr testarr = new TestArr();
             testarr.testArr();
             temp();
         }
-
         private void temp()
-=======
+        {
             testxuni();
+            TestCls.Person person;
+            person.Age = 12;
+            person.Name = "good boy";
+            Console.WriteLine(person.ToString());
         }
 
         private void testxuni()
@@ -35,14 +38,7 @@ namespace Movefiles
         }
 
         
-        private void textBox1_TextChanged(object sender, EventArgs e)
->>>>>>> 62c80edfa9b74d7e18a223031d1a20a05725fc6e
-        {
-            TestCls.Person person;
-            person.Age = 12;
-            person.Name = "good boy";
-            Console.WriteLine(person.ToString());
-        }
+
 
        
 

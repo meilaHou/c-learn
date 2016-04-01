@@ -16,3 +16,4 @@ F:\workspace\Ctest\c-learn\Movefiles\Movefiles\obj\Debug\Movefiles.Properties.Re
 F:\workspace\Ctest\c-learn\Movefiles\Movefiles\obj\Debug\Movefiles.csproj.GenerateResource.Cache
 F:\workspace\Ctest\c-learn\Movefiles\Movefiles\bin\Debug\Movefiles.exe
 F:\workspace\Ctest\c-learn\Movefiles\Movefiles\bin\Debug\Movefiles.pdb
+F:\workspace\Ctest\c-learn\Movefiles\Movefiles\obj\Debug\utils.Properties.Resources.resources
