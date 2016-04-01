@@ -9,7 +9,7 @@ namespace Movefiles
     class Childcls:Parentcls
     {
         public override void func1(int a)
-        {
+        { 
             Console.WriteLine("child1cls func1 实现");
             base.func1(a);
         }
