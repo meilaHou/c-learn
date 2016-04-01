@@ -1,4 +1,5 @@
-﻿class Greeter {
+﻿
+class Greeter {
     element: HTMLElement;
     span: HTMLElement;
     timerToken: number;
@@ -19,9 +20,10 @@
         clearTimeout(this.timerToken);
     }
 }
-
+createjs.PreloadJS
 window.onload = () => {
     var el = document.getElementById('content');
     var greeter = new Greeter(el);
     greeter.start();
+    
 };
