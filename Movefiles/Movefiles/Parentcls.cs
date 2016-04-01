@@ -12,6 +12,17 @@ namespace Movefiles
         {
             Console.WriteLine("parentcls func1 虚拟");
         }
+
+        public void newtestfunc()
+        {
+
+            Console.WriteLine("parentcls newtestfunc  虚拟");
+
+        }
+        public void  overridetestfunc()
+        {
+            Console.WriteLine("parentcls newtestfunc  虚拟");
+        }
         private double seconds = 100;
         public virtual double Hours
         {

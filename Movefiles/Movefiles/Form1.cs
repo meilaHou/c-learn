@@ -29,12 +29,16 @@ namespace Movefiles
             person.Age = 12;
             person.Name = "good boy";
             Console.WriteLine(person.ToString());
+
+
         }
 
         private void testxuni()
         {
             Childcls child = new Childcls();
-            child.func1(0);
+            ((Parentcls)child).func1(0);
+            child.newtestfunc();
+            ((Parentcls)child).newtestfunc();
         }
 
         
