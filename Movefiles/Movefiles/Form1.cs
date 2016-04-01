@@ -13,7 +13,7 @@ namespace Movefiles
     public partial class form_1 : Form
     {
         public form_1()
-        {
+        { 
             InitializeComponent();
            // drawPanel();
 
