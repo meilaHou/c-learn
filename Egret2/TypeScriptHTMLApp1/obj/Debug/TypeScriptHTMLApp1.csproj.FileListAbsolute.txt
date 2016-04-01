@@ -4,3 +4,6 @@ C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHT
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.dll
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.pdb
+F:\workspace\Ctest\c-learn\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.csprojResolveAssemblyReference.cache
+F:\workspace\Ctest\c-learn\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.dll
+F:\workspace\Ctest\c-learn\Egret2\TypeScriptHTMLApp1\obj\Debug\TypeScriptHTMLApp1.pdb

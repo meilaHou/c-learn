@@ -121,6 +121,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="libs\exml.e.d.ts" />
     <TypeScriptCompile Include="libs\modules\egret\egret.d.ts" />
     <TypeScriptCompile Include="libs\modules\eui\eui.d.ts" />
     <TypeScriptCompile Include="libs\modules\game\game.d.ts" />

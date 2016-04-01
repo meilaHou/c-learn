@@ -19,6 +19,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="createjs\preloadjs-0.6.2.combined.js" />
     <Content Include="HtmlPage1.html" />
     <Content Include="index.html" />
     <Content Include="StyleSheet1.css" />
