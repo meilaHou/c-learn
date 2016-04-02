@@ -39,9 +39,28 @@ namespace Movefiles
             ((Parentcls)child).func1(0);
             child.newtestfunc();
             ((Parentcls)child).newtestfunc();
+            child.overridetestfunc();
+            ((Parentcls)child).overridetestfunc();
         }
 
-        
+
+        private async Task DoSomethingAsync()
+        {
+            Task<int> delayTask = DelayAsync();
+            int result = await delayTask;
+
+            // The previous two statements may be combined into
+            // the following statement.
+            //int result = await DelayAsync();
+
+            Console.WriteLine("Result: " + result);
+        }
+
+        private async Task<int> DelayAsync()
+        {
+            await Task.Delay(1000);
+            return 5;
+        }
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -50,9 +69,9 @@ namespace Movefiles
         }
 
         SimpleFileCopy filecopy = new SimpleFileCopy();
-        private void start_btn_Click(object sender, EventArgs e)
+        private async void start_btn_Click(object sender, EventArgs e)
         {
-            
+             await DoSomethingAsync();
             res_text = this.res_txt.Text;
             target_text = this.target_txt.Text;
             if(nodelelete_cb.Checked)
@@ -65,8 +84,8 @@ namespace Movefiles
 
             }
 
-           // filecopy.recodePath(paths_txt.Text,res_text, target_text);
-            filecopy.start(res_text, target_text, writefilename);
+            //filecopy.recodePath(paths_txt.Text,res_text, target_text);
+           if(res_text!="") filecopy.start(res_text, target_text, writefilename);
         }
         private string writefilename(string pasth)
         {

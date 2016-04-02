@@ -21,8 +21,9 @@ namespace Movefiles
         }
         public void  overridetestfunc()
         {
-            Console.WriteLine("parentcls newtestfunc  虚拟");
+            Console.WriteLine("parentcls overridetestfunc ");
         }
+        
         private double seconds = 100;
         public virtual double Hours
         {
