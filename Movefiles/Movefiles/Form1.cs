@@ -22,15 +22,23 @@ namespace Movefiles
             testarr.testArr();
             temp();
         }
+
+
+
+
         private void temp()
         {
             testxuni();
             TestCls.Person person;
+            
             person.Age = 12;
             person.Name = "good boy";
             Console.WriteLine(person.ToString());
 
-
+            //测试扩展方法
+            string name = "1235667";
+            int intage = 12;
+            Console.WriteLine(intage.tostring());
         }
 
         private void testxuni()
@@ -97,23 +105,23 @@ namespace Movefiles
 
         }
          List<Panel> panelList = new List<Panel>();
-        private void drawPanel()
-        {
-            Panel temppanel = new  Panel();
-            temppanel.Width = 100;
-            temppanel.Name = "panel" + panelList.Count;
+        //private void drawPanel()
+        //{
+        //    Panel temppanel = new  Panel();
+        //    temppanel.Width = 100;
+        //    temppanel.Name = "panel" + panelList.Count;
             
             
-            Button tempbutton1 = new Button();
-            tempbutton1.Location = new Point(10, 40);
-            tempbutton1.Text = "buttonss";
-            tempbutton1.Click += new EventHandler(start_btn_Click);
+        //    Button tempbutton1 = new Button();
+        //    tempbutton1.Location = new Point(10, 40);
+        //    tempbutton1.Text = "buttonss";
+        //    tempbutton1.Click += new EventHandler(start_btn_Click);
 
-            temppanel.Controls.Add(tempbutton1);
-            this.Controls.Add(temppanel);
-            this.Controls.SetChildIndex(temppanel, 0);
-            panelList.Add(temppanel);
-        }
+        //    temppanel.Controls.Add(tempbutton1);
+        //    this.Controls.Add(temppanel);
+        //    this.Controls.SetChildIndex(temppanel, 0);
+        //    panelList.Add(temppanel);
+        //}
         public string res_text
         {
             get;
