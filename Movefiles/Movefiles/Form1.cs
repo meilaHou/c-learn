@@ -41,14 +41,20 @@ namespace Movefiles
             Console.WriteLine(intage.tostring());
         }
 
+
+
         private void testxuni()
         {
-            Childcls child = new Childcls();
+            Childcls child = new Childcls { firstname = "helloname",firstage = 123};
+            Childcls.Nested nest = new Childcls.Nested(child);
             ((Parentcls)child).func1(0);
             child.newtestfunc();
             ((Parentcls)child).newtestfunc();
             child.overridetestfunc();
             ((Parentcls)child).overridetestfunc();
+
+            //测试委托;
+            child.testweituo();
         }
 
 
