@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using utils;
+using BaseClassEvents;
+using Movefiles;
+using utils.filetest;
 namespace Movefiles
 {
     public partial class form_1 : Form
@@ -17,31 +20,75 @@ namespace Movefiles
             InitializeComponent();
            // drawPanel();
 
-           // testArr();
-            TestArr testarr = new TestArr();
-            testarr.testArr();
+          
             temp();
         }
 
 
 
-
+        //测试用方法
         private void temp()
         {
-            testxuni();
-            TestCls.Person person;
-            
-            person.Age = 12;
-            person.Name = "good boy";
-            Console.WriteLine(person.ToString());
+           // // 测试数组
+           // TestArr testarr = new TestArr();
+           // testarr.testArr();
+           //// 测试虚拟方法
+           // testxuni();
+           // TestCls.Person person;
+            //测试委托;
+           // child.testweituo();
+           // person.Age = 12;
+           // person.Name = "good boy";
+           // Console.WriteLine(person.ToString());
 
-            //测试扩展方法
-            string name = "1235667";
-            int intage = 12;
-            Console.WriteLine(intage.tostring());
+           // //测试扩展方法
+           // string name = "1235667";
+           // int intage = 12;
+           // Console.WriteLine(intage.tostring());
+
+           // //测试事件,派生类调用基类事件;
+           // testevents();
+
+            //测试异常处理
+           // testexception();
+
+            //测试循环访问目录树;
+            testfiles();
         }
 
+        private void testfiles()
+        {
+            //RecursiveFileSearch.testmain();
+            string sourcePath = "C:/Users/Administrator/Desktop/testcopy/source";
+            string targetPath = "C:/Users/Administrator/Desktop/testcopy/target";
+            RecursiveFileSearch.getAllfilesName(sourcePath);
+           // RecursiveFileSearch.copyFilesAndDir(sourcePath, targetPath,true);
+            string[] patharr = {@"C:\Users\Administrator\Desktop\testcopy\source\testdir\test.txt",
+                               @"C:\Users\Administrator\Desktop\testcopy\source\test.txt"};
+           // RecursiveFileSearch.delFiles(patharr);
+            RecursiveFileSearch.copyFiles(@"C:\Users\Administrator\Desktop\testcopy\source\testdir\test.txt",
+                @"C:\Users\Administrator\Desktop\testcopy\target\testdir\"
+                );
+        }
+        private void testexception()
+        {
+            ExceptionTest.test();
+        }
 
+        private void testevents()
+        {
+            Circle c1 = new Circle(54);
+            BaseClassEvents.Rectangle r1 = new BaseClassEvents.Rectangle(12, 9);
+            ShapeContainer sc = new ShapeContainer();
+
+            // Add the shapes to the container.
+            sc.AddShape(c1);
+            sc.AddShape(r1);
+
+            // Cause some events to be raised.
+            c1.Update(57);
+            r1.Update(7, 7);
+        }
 
         private void testxuni()
         {
@@ -53,8 +100,6 @@ namespace Movefiles
             child.overridetestfunc();
             ((Parentcls)child).overridetestfunc();
 
-            //测试委托;
-            child.testweituo();
         }
 
 
@@ -77,12 +122,21 @@ namespace Movefiles
         }
 
 
+
+
+
+
+
+
+
+
+
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Console.WriteLine();
         }
 
-        SimpleFileCopy filecopy = new SimpleFileCopy();
         private async void start_btn_Click(object sender, EventArgs e)
         {
              await DoSomethingAsync();
@@ -99,7 +153,7 @@ namespace Movefiles
             }
 
             //filecopy.recodePath(paths_txt.Text,res_text, target_text);
-           if(res_text!="") filecopy.start(res_text, target_text, writefilename);
+           //if(res_text!="") filecopy.start(res_text, target_text, writefilename);
         }
         private string writefilename(string pasth)
         {
