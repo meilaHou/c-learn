@@ -100,10 +100,10 @@ namespace utils.filetest
         /// <summary>
         /// 判断是否存在某目录,是否创建
         /// 文件夹
-        /// 保留---保留
+        /// 保留---保留 isCreate = true;
         /// 删除---删除(指原有的)
         /// 文件
-        /// 保留---删除
+        /// 保留---删除 isCreate = true;
         /// 删除---删除
         /// </summary>
         /// <param name="path"></param>

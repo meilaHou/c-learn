@@ -62,13 +62,20 @@ namespace Movefiles
             string sourcePath = "C:/Users/Administrator/Desktop/testcopy/source";
             string targetPath = "C:/Users/Administrator/Desktop/testcopy/target";
             RecursiveFileSearch.getAllfilesName(sourcePath);
-           // RecursiveFileSearch.copyFilesAndDir(sourcePath, targetPath,true);
+            // RecursiveFileSearch.copyFilesAndDir(sourcePath, targetPath,true);
+           
             string[] patharr = {@"C:\Users\Administrator\Desktop\testcopy\source\testdir\test.txt",
                                @"C:\Users\Administrator\Desktop\testcopy\source\test.txt"};
-           // RecursiveFileSearch.delFiles(patharr);
-            RecursiveFileSearch.copyFiles(@"C:\Users\Administrator\Desktop\testcopy\source\testdir\test.txt",
-                @"C:\Users\Administrator\Desktop\testcopy\target\testdir\"
-                );
+            // RecursiveFileSearch.delFiles(patharr);
+           
+            //RecursiveFileSearch.copyFiles(@"C:\Users\Administrator\Desktop\testcopy\source\testdir\test.txt",
+            //    @"C:\Users\Administrator\Desktop\testcopy\target\testdir\"
+            //    );
+
+            //FileProgress pgrs = new FileProgress();
+            //pgrs.openfiled();
+            WriteTextFile wtest = new WriteTextFile();
+            wtest.writetest();
         }
         private void testexception()
         {
