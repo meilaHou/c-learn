@@ -1,0 +1,10 @@
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\BlackJackLoading.swf”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\Locale.xml”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\BlackJackLoading-encrypt.swf”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\Locale.xml”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\BlackJackLoading-encrypt.swf”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6_config\build\classic\bin-debug\game\resource\global\zh_cn\BlackJackLoading.swf”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6_config\build\junbo\bin-debug\game\resource\global\zh_cn\BlackJackLoading.swf”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\Locale.xml”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\Locale.xml”的一部分。
+没有找到文件夹:未能找到路径“F:\workspace\EGameClient6\bin-debug\bin-debug\game\resource\global\zh_cn\Locale.xml”的一部分。

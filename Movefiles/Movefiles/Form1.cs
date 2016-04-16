@@ -11,6 +11,7 @@ using utils;
 using BaseClassEvents;
 using Movefiles;
 using utils.filetest;
+using utils.stringtest;
 namespace Movefiles
 {
     public partial class form_1 : Form
@@ -74,8 +75,16 @@ namespace Movefiles
 
             //FileProgress pgrs = new FileProgress();
             //pgrs.openfiled();
-            WriteTextFile wtest = new WriteTextFile();
-            wtest.writetest();
+           // WriteTextFile wtest = new WriteTextFile();
+           // wtest.writetest();
+
+            testString();
+        }
+
+        private void testString()
+        {
+            MatchWithReg regtest = new MatchWithReg();
+            regtest.testReg();
         }
         private void testexception()
         {
