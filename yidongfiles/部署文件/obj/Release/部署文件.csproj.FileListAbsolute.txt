@@ -1,0 +1,17 @@
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\部署文件.exe.config
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\部署文件.exe.manifest
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\部署文件.application
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\部署文件.exe
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\部署文件.pdb
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\DiffieHellman.dll
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\Org.Mentalis.Security.dll
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Release\Tamir.SharpSSH.dll
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.Form1.resources
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.FTPOperation.resources
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.InfoForm.resources
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.Properties.Resources.resources
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.csproj.GenerateResource.Cache
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.exe.manifest
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.application
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.exe
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Release\部署文件.pdb

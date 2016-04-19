@@ -8,10 +8,26 @@ namespace Movefiles
 {
     class Parentcls
     {
+        public Parentcls()
+        {
+            Console.WriteLine("Parentcls 默认构造函数");
+        }
         public virtual void func1(int a)
         {
             Console.WriteLine("parentcls func1 虚拟");
         }
+
+        public void newtestfunc()
+        {
+
+            Console.WriteLine("parentcls newtestfunc  虚拟");
+
+        }
+        public void  overridetestfunc()
+        {
+            Console.WriteLine("parentcls overridetestfunc ");
+        }
+        
         private double seconds = 100;
         public virtual double Hours
         {

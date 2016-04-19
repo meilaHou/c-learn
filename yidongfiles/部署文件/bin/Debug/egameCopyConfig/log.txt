@@ -1,0 +1,6 @@
+文件删除失败原因：Tamir.SharpSsh.jsch.SftpException: 引发类型为“Tamir.SharpSsh.jsch.SftpException”的异常。
+   在 Tamir.SharpSsh.jsch.ChannelSftp.rm(String path)
+   在 UploadFile2Sftp.SFTPHelper.Delete(String remoteFile) 位置 f:\workspace\Ctest\c-learn\yidongfiles\部署文件\SFTPHelper.cs:行号 108
+文件删除失败原因：Tamir.SharpSsh.jsch.SftpException: 引发类型为“Tamir.SharpSsh.jsch.SftpException”的异常。
+   在 Tamir.SharpSsh.jsch.ChannelSftp.rm(String path)
+   在 UploadFile2Sftp.SFTPHelper.Delete(String remoteFile) 位置 f:\workspace\Ctest\c-learn\yidongfiles\部署文件\SFTPHelper.cs:行号 108

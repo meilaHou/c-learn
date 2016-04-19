@@ -1,0 +1,4 @@
+username:javauser
+password:h2mHTBlT4R3oaIAlMb7L
+host:121.12.118.146:55886
+reomotepath:\home\javauser\app\egame2.2\egameentrance\client
