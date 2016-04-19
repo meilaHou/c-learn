@@ -5,6 +5,7 @@ using System.Collections;
 
 using Tamir.SharpSsh;
 using Tamir.SharpSsh.jsch;
+using 部署文件;
 
 
 namespace UploadFile2Sftp
@@ -77,8 +78,9 @@ namespace UploadFile2Sftp
                 m_sftp.put(src, dst);
                 return true;
             }
-            catch
+            catch (Exception exp)
             {
+                Log.warn("文件上传失败原因：" + exp.ToString());
                 return false;
             }
         }
@@ -106,8 +108,9 @@ namespace UploadFile2Sftp
                 m_sftp.rm(remoteFile);
                 return true;
             }
-            catch
+            catch (Exception exp)
             {
+                Log.warn("文件删除失败原因：" + exp.ToString());
                 return false;
             }
         }

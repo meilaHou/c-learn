@@ -15,7 +15,6 @@ namespace 部署文件
         private static List<string> templist;
         static CopyFilesManger()
         {
-            
             copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\";
             templist = ChangedFilesManager.GetInstance().filePathList;
         }
@@ -44,14 +43,14 @@ namespace 部署文件
             }
 
             //config.json在build目录中直接修改
-            //if (RecursiveFileSearch.copyFiles(copyresourcebuild + @"game\json\config.json", copytargetbuild + @"game\json\"))
-            //{
-            //    Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 成功");
-            //}
-            //else
-            //{
-            //    Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 失败");
-            //};
+            if (RecursiveFileSearch.copyFiles(copyresourcebuild + @"game\json\config.json", copytargetbuild + @"game\json\"))
+            {
+                Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 成功");
+            }
+            else
+            {
+                Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 失败");
+            };
         }
         /// <summary>
         /// 将修改的文件复制到文件整理目录中去
@@ -121,7 +120,7 @@ namespace 部署文件
                             ReadmeConfig.addConfig(PathManager.mayayl + @"/" + System.IO.Path.GetFileName(file), @"/" + PathManager.mayayl + @"/" + System.IO.Path.GetDirectoryName(file) + @"/");
                         }
                         else
-                        {
+                        {   
                             Log.trace("文件copy到 " + copytargetbuild + " 失败");
                         };
                         // string provider = "classic"

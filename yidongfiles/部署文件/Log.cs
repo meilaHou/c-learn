@@ -14,6 +14,10 @@ namespace 部署文件
         private static bool isFirstFtpLog = true;
         public static void trace(string str)
         {
+            if (textbox == null)
+            {
+                return;
+            }
             textbox.AppendText(str+"\n");
             textbox.Select(textbox.Text.Length, 0);
             textbox.ScrollToCaret();  

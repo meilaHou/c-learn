@@ -83,10 +83,8 @@ namespace 部署文件
                 else
                 {
                     log_tb.AppendText("connect ok" + "\n");
-                    userinfo.host = host_txt.Text;
-                    userinfo.name = this.userName_txt.Text;
-                    userinfo.password = this.pw_txt.Text;
-                    writeLoginInfo(userinfo);
+                   
+                    writeLoginInfo();
                     this.connect_btn.Text = "断开";
                     this.connect_btn.Enabled = true;
                     testftp();
@@ -101,23 +99,31 @@ namespace 部署文件
            
         }
 
-        private void writeLoginInfo(UserInfo userinfos)
+        private void writeLoginInfo()
         {
+            userinfo.host = host_txt.Text;
+            userinfo.name = this.userName_txt.Text;
+            userinfo.password = this.pw_txt.Text;
+            userinfo.remotePath = this.remotePath_txt.Text;
             write.TxtPath = PathManager.GetInstance().LoginINfoLog;
-            if (!write.replaceLineText("username:", "username:"+userinfos.name))
+            if (!write.replaceLineText("username:", "username:" + userinfo.name))
             {
-                write.addOneLine("username:" + userinfos.name);
+                write.addOneLine("username:" + userinfo.name);
             }
-            if (!write.replaceLineText("password:", "password:" + userinfos.password))
+            if (!write.replaceLineText("password:", "password:" + userinfo.password))
             {
-                write.addOneLine("password:" + userinfos.password);
+                write.addOneLine("password:" + userinfo.password);
             }
-            if (!write.replaceLineText("host:", "host:" + userinfos.host))
+            if (!write.replaceLineText("host:", "host:" + userinfo.host))
             {
-                write.addOneLine("host:" + userinfos.host);
+                write.addOneLine("host:" + userinfo.host);
+            }
+            if (!write.replaceLineText("reomotepath:", "reomotepath:" + userinfo.remotePath))
+            {
+                write.addOneLine("reomotepath:" + userinfo.remotePath);
             }
         }
-        UserInfo userinfo = new UserInfo();
+        MyUserInfo userinfo = new MyUserInfo();
         private void checkLoginInfo()
         {
             write.TxtPath = PathManager.GetInstance().LoginINfoLog;
@@ -136,17 +142,29 @@ namespace 部署文件
                 {
                     host_txt.Text = userinfo.host = info.Replace(@"host:", "");
                 }
+                else if (info.Contains("reomotepath:"))
+                {
+                    this.remotePath_txt.Text = userinfo.remotePath = info.Replace(@"reomotepath:", "");
+                }
             }
         }
 
         private void testftp()
         {
+            userinfo.remotePath = this.remotePath_txt.Text;
+            userinfo.remotePath = userinfo.remotePath.Replace(@"\",@"/");
             ArrayList objList = new ArrayList();
-          objList = SFTP.GetFileList(@"/home/javauser/",@"txt");
+            objList = SFTP.GetFileList(userinfo.remotePath + @"/mayayl/game/json/", @"json");
+            if (objList==null ||objList.Count <= 0)
+            {
+                this.log_tb.AppendText("远程目录路径不正确" + "\n");
+                return;
+            }
             foreach(var str in objList)
             {
                 this.log_tb.AppendText(str + "\n");
             }
+            
         }
         /// <summary>
         /// 
@@ -156,6 +174,7 @@ namespace 部署文件
         private void closedHandler(object sender, FormClosedEventArgs e)
         {
             closeConnect();
+            this.Dispose();
         }
         /// <summary>
         /// 关闭sftp连接
@@ -167,11 +186,98 @@ namespace 部署文件
                 SFTP.Disconnect();
             }
         }
+
+        private void upload_btn_Click(object sender, EventArgs e)
+        {
+            if(SFTP == null||!SFTP.Connected)
+            {
+                log_tb.AppendText("远程服务器已经断开..." + "\n");
+                return;
+            }
+
+            if (userinfo.remotePath == "")
+            {
+                log_tb.AppendText("远程服务器上传目录地址不存在" + "\n");
+            }
+           // SFTP.Delete(@"/home/javauser/app/egame2.2/egameentrance/client/mayayl/game/json/config.json"); 
+            List<string> list = getAllselectedList();
+            foreach(string line in list)
+            {
+                string temppath = System.IO.Path.GetDirectoryName(line);
+                string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
+                //一定是\;
+                //开头一定是\开始
+                //结尾文件夹+\
+                remotepath  = remotepath.Replace(@"/", @"\");
+                string templine = line.Replace(@"/", @"\");
+                if (SFTP.Put(templine, remotepath))
+                 {
+                     log_tb.AppendText("上传 " + remotepath  + " 成功" + "\n");
+                 }
+                 else
+                 {
+                     log_tb.AppendText("上传 " + remotepath  + " 失败" + "\n");
+                 };
+                
+            }
+        }
+
+        private void deleteClick(object sender, EventArgs e)
+        {
+            if (SFTP == null || !SFTP.Connected)
+            {
+                log_tb.AppendText("远程服务器已经断开..." + "\n");
+                return;
+            }
+            List<string> list = getAllselectedList();
+            foreach (string line in list)
+            {
+               // string temppath = System.IO.Path.GetDirectoryName(line);
+                string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
+                string tempstr = remotepath.Replace(@"/", @"\");
+                if (SFTP.Delete(tempstr))
+                {
+                    log_tb.AppendText("删除 " + tempstr + " 成功" + "\n");
+                }
+                else
+                {
+                    log_tb.AppendText("删除 " + tempstr + " 失败" + "\n");
+                };
+            }
+        }
+
+        private void get_btn_Click(object sender, EventArgs e)
+        {
+            if (SFTP == null || !SFTP.Connected)
+            {
+                log_tb.AppendText("远程服务器已经断开..." + "\n");
+                return;
+            }
+            List<string> list = getAllselectedList();
+            foreach (string line in list)
+            {
+                string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
+                string tempstr = remotepath.Replace(@"/", @"\");
+                string localpath = line;//System.IO.Path.GetDirectoryName(line);
+                if (SFTP.Get(tempstr, localpath))
+                {
+                    log_tb.AppendText("获取 " + tempstr + " 成功" + "\n");
+                }
+                else
+                {
+                    log_tb.AppendText("获取 " + tempstr + " 失败" + "\n");
+                };
+            }
+        }
+
+        
     }
-    struct UserInfo
+    struct MyUserInfo
     {
         public string name;
         public string password;
         public string host;
+
+        public string remotePath { get; set; }
     }
 }

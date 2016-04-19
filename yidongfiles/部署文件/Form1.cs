@@ -166,6 +166,10 @@ namespace 部署文件
 
         private void ftpUpdateClick(object sender, EventArgs e)
         {
+            if (ftppanel.IsDisposed || ftppanel == null)
+            {
+                ftppanel = new FTPOperation();
+            }
             ftppanel.ShowDialog();
         }
 
