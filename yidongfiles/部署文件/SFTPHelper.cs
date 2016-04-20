@@ -1,157 +1,130 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Collections;
-
+using System.Threading.Tasks;
 using Tamir.SharpSsh;
-using Tamir.SharpSsh.jsch;
-using 部署文件;
+using Tamir.SharpSsh.jsch.examples;
 
 
-namespace UploadFile2Sftp
+
+namespace 部署文件
 {
-    public class SFTPHelper
+    class SFTPHelper
     {
-        private Session m_session;
-        private Channel m_channel;
-        private ChannelSftp m_sftp;
-
-        //host:sftp地址   user：用户名   pwd：密码        
+       public SshTransferProtocolBase sshCp;
+       public delegate void traceFunc(string str);
+       public static traceFunc traceHandler;
+        //host:sftp地址   user：用户名   pwd：密码   
+        /// <summary>
+        /// 执行文件的get 和put
+        /// 对于删除和查询操作,使用shellhelp
+        /// </summary>
+        /// <param name="host"></param>
+        /// <param name="user"></param>
+        /// <param name="pwd"></param>
         public SFTPHelper(string host, string user, string pwd)
         {
             string[] arr = host.Split(':');
-            string ip = arr[0];
+            string ip = arr[0];//端口指定 在
             int port = 22;
             if (arr.Length > 1) port = Int32.Parse(arr[1]);
 
             
+            if (host.Equals("scp"))
+                sshCp = new Scp(ip, user);
+            else
+                sshCp = new Tamir.SharpSsh.Sftp(ip, user);
 
-            JSch jsch = new JSch();
-            m_session = jsch.getSession(user, ip, port);
-            MyUserInfo ui = new MyUserInfo();
-            ui.setPassword(pwd);
+            if (pwd != null) sshCp.Password = pwd;
+            
+           // if (input.IdentityFile != null) sshCp.AddIdentityFile(input.IdentityFile);
+            sshCp.OnTransferStart += new FileTransferEvent(sshCp_OnTransferStart);
+            sshCp.OnTransferProgress += new FileTransferEvent(sshCp_OnTransferProgress);
+            sshCp.OnTransferEnd += new FileTransferEvent(sshCp_OnTransferEnd);
+
+            Console.Write("Connecting...");
            
-            m_session.setUserInfo(ui);
-
         }
 
-        //SFTP连接状态        
-        public bool Connected { get { return m_session.isConnected(); } }
+        
 
-        //连接SFTP        
-        public bool Connect()
+        static ConsoleProgressBar progressBar;
+        public bool Connected;
+        private static void sshCp_OnTransferStart(string src, string dst, int transferredBytes, int totalBytes, string message)
         {
-            try
+            Console.WriteLine();
+            progressBar = new ConsoleProgressBar();
+           StringBuilder temp =  progressBar.Update(transferredBytes, totalBytes, message);
+           traceHandler(temp.ToString());
+        }
+
+        private static void sshCp_OnTransferProgress(string src, string dst, int transferredBytes, int totalBytes, string message)
+        {
+            if (progressBar != null)
             {
-                if (!Connected)
-                {
-                    m_session.connect();
-                    m_channel = m_session.openChannel("sftp");
-                    m_channel.connect();
-                    m_sftp = (ChannelSftp)m_channel;
-                }
-                return true;
+                StringBuilder temp = progressBar.Update(transferredBytes, totalBytes, message);
+               // traceHandler(temp.ToString());
             }
-            catch
+        }
+
+        private static void sshCp_OnTransferEnd(string src, string dst, int transferredBytes, int totalBytes, string message)
+        {
+            if (progressBar != null)
             {
+                StringBuilder temp = progressBar.Update(transferredBytes, totalBytes, message);
+                traceHandler(temp.ToString());
+                progressBar = null;
+            }
+        }
+
+        internal bool Put(string p1, string p2)
+        {
+            if(System.IO.File.Exists(p1))
+            {
+                sshCp.Put(p1,p2);
+                return true;//在put执行完毕后,执行这个返回
+            }
+            else
+            {
+                Log.warn(p1 + " 文件不存在");
                 return false;
             }
+           
         }
 
-        //断开SFTP        
-        public void Disconnect()
+        internal string GetAllString()
         {
-            if (Connected)
-            {
-                m_channel.disconnect();
-                m_session.disconnect();
-            }
+            throw new NotImplementedException();
         }
 
-        //SFTP存放文件        
-        public bool Put(string localPath, string remotePath)
+        internal bool Delete(string tempstr)
         {
+            throw new NotImplementedException();
+        }
+
+        internal bool connect()
+        {
+            bool bln = false;
             try
             {
-                Tamir.SharpSsh.java.String src = new Tamir.SharpSsh.java.String(localPath);
-                Tamir.SharpSsh.java.String dst = new Tamir.SharpSsh.java.String(remotePath);
-                m_sftp.put(src, dst);
-                return true;
-            }
-            catch (Exception exp)
+                sshCp.Connect();
+                Console.WriteLine("OK");
+                bln = true;
+                
+            }catch
             {
-                Log.warn("文件上传失败原因：" + exp.ToString());
-                return false;
+                
+                bln = false;
             }
+            Connected = bln;
+            return bln;
         }
 
-        //SFTP获取文件        
-        public bool Get(string remotePath, string localPath)
+        public void close()
         {
-            try
-            {
-                Tamir.SharpSsh.java.String src = new Tamir.SharpSsh.java.String(remotePath);
-                Tamir.SharpSsh.java.String dst = new Tamir.SharpSsh.java.String(localPath);
-                m_sftp.get(src, dst);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        //删除SFTP文件
-        public bool Delete(string remoteFile)
-        {
-            try
-            {
-                m_sftp.rm(remoteFile);
-                return true;
-            }
-            catch (Exception exp)
-            {
-                Log.warn("文件删除失败原因：" + exp.ToString());
-                return false;
-            }
-        }
-
-        //获取SFTP文件列表        
-        public ArrayList GetFileList(string remotePath, string fileType)
-        {
-            try
-            {
-                Tamir.SharpSsh.java.util.Vector vvv = m_sftp.ls(remotePath);
-                ArrayList objList = new ArrayList();
-                foreach (Tamir.SharpSsh.jsch.ChannelSftp.LsEntry qqq in vvv)
-                {
-                    string sss = qqq.getFilename();
-                    if (sss.Length > (fileType.Length + 1) && fileType == sss.Substring(sss.Length - fileType.Length))
-                    { objList.Add(sss); }
-                    else { continue; }
-                }
-
-                return objList;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-
-        //登录验证信息        
-        public class MyUserInfo : UserInfo
-        {
-            String passwd;
-            public String getPassword() { return passwd; }
-            public void setPassword(String passwd) { this.passwd = passwd; }
-
-            public String getPassphrase() { return null; }
-            public bool promptPassphrase(String message) { return true; }
-
-            public bool promptPassword(String message) { return true; }
-            public bool promptYesNo(String message) { return true; }
-            public void showMessage(String message) { }
+            sshCp.Close();
+            Connected = false;
         }
     }
 }

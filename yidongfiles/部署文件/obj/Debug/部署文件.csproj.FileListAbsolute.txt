@@ -9,10 +9,8 @@ F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\部署文件.pdb
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.exe
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.pdb
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.FTPOperation.resources
-F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\DiffieHellman.dll
-F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\Org.Mentalis.Security.dll
-F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\Tamir.SharpSSH.dll
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\部署文件.exe.manifest
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\部署文件.application
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.exe.manifest
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.application
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\Tamir.SharpSSH.pdb

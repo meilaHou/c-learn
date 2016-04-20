@@ -13,7 +13,7 @@ namespace 部署文件
          public static string classicPath = @"/build/classic/game/json/";
          public static string  junboPath = @"/build/junbo/";
          public static string mayaPath = @"/build/mayayl/game/json/";
-         //public static String debugPath = @"/bin-debug/game/json/";
+         public static String debugPath = @"/bin-debug/game/json/";
          private WriteTextFile writefile;
         public ModifyConfig()
          {
@@ -45,6 +45,9 @@ namespace 部署文件
                 string re5 = "(\\d+)";	// Integer Number 3
                 string currenttime = DateTime.Now.ToString("yyMMddhhmm");
                 bool isfox;
+                writefile.TxtPath = PathManager.GetInstance().ProgramPath + debugPath + configName;
+                isfox = writefile.replaceLineWithReg(re0 + re01 + re02 + re03 + re1 + re2 + re3 + re4 + re5, "\"" + filename + fileextension + "?t=" + currenttime);
+                Log.trace(debugPath + "    " + filename + fileextension + " " + (isfox ? "成功" : "失败"));
                 writefile.TxtPath = PathManager.GetInstance().ProgramPath + mayaPath + configName;
                 isfox = writefile.replaceLineWithReg(re0 + re01 + re02 + re03 + re1 + re2 + re3 + re4 + re5, "\"" + filename + fileextension + "?t=" + currenttime);
                 Log.trace(mayaPath + "    " + filename + fileextension + " " + (isfox ? "成功" : "失败"));

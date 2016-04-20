@@ -2,15 +2,6 @@
 F:\workspace\EGameClient6_config\build\mayayl\game\resource\global\zh_cn\BlackJackLoading.swf
 F:\workspace\EGameClient6_config\build\classic\game\resource\global\zh_cn\BlackJackLoading.swf
 F:\workspace\EGameClient6_config\build\junbo\game\resource\global\zh_cn\BlackJackLoading.swf
-F:\workspace\EGameClient6_config\build\mayayl\game\resource\global\zh_cn\Locale.xml
-F:\workspace\EGameClient6_config\build\classic\game\resource\global\zh_cn\Locale.xml
-F:\workspace\EGameClient6_config\build\junbo\game\resource\global\zh_cn\Locale.xml
-F:\workspace\EGameClient6_config\build\mayayl\game\Game.swf
-F:\workspace\EGameClient6_config\build\classic\game\Game.swf
-F:\workspace\EGameClient6_config\build\junbo\game\Game.swf
-F:\workspace\EGameClient6_config\build\mayayl\game\plugin\dealer\dealerA.swf
-F:\workspace\EGameClient6_config\build\classic\game\plugin\dealer\dealerA.swf
-F:\workspace\EGameClient6_config\build\junbo\game\plugin\dealer\dealerA.swf
 F:\workspace\EGameClient6_config\build\mayayl\game\json\config.json
 F:\workspace\EGameClient6_config\build\classic\game\json\config.json
 F:\workspace\EGameClient6_config\build\junbo\game\json\config.json
