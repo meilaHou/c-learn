@@ -205,11 +205,11 @@ namespace 部署文件
             {
                 string temppath = System.IO.Path.GetDirectoryName(line);
                 string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
-                //一定是\;
+                // 注意传参时,\ 会变成\\, 从而导致上传不成功;
                 //开头一定是\开始
                 //结尾文件夹+\
-                remotepath  = remotepath.Replace(@"/", @"\");
-                string templine = line.Replace(@"/", @"\");
+                remotepath = remotepath.Replace(@"\", @"/");
+                string templine = line.Replace(@"\", @"/");
                 if (SFTP.Put(templine, remotepath))
                  {
                      log_tb.AppendText("上传 " + remotepath  + " 成功" + "\n");

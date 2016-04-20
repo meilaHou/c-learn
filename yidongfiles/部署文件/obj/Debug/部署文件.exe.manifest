@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="46592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="47104">
       <assemblyIdentity name="部署文件" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dJUqba5MD402At0coYOvB/AXWew2zw6MSgkyDs74684=</dsig:DigestValue>
+        <dsig:DigestValue>nB6FJBBGx2uMZVqxuDY6IFxD5UhAQImtujdKfCn3dnM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
