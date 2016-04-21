@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using utils.filetest;
-using UploadFile2Sftp;
 using System.Collections;
+using ConsoleApplication1;
+using 部署文件;
 namespace 部署文件
 {
     public partial class FTPOperation : Form
     {
         private List<string> filelist;
-        private SFTPHelper SFTP;
+       // private SFTPHelper SFTP;
         WriteTextFile write = new WriteTextFile();
         public FTPOperation()
         {
@@ -64,31 +65,68 @@ namespace 部署文件
             }
             return templist;
         }
+        SFTPHelper SFTP;
+        //通过shell命令操作
+        //private  string ssh_conn_shell(string ip, string root, string pass)
+        //{
+            //SFTP = new ShellHelp();
 
+            ////连接linux成功 
 
+            //if (!SFTP.OpenShell(ip, root, pass))
+            //{
 
+            //    log_tb.AppendText("connect fail" + "\n");
+            //    this.connect_btn.Text = "连接";
+            //    this.connect_btn.Enabled = true;
+
+               
+
+            //}
+            //else
+            //{
+            //    log_tb.AppendText("connect ok" + "\n");
+
+            //    writeLoginInfo();
+            //    this.connect_btn.Text = "断开";
+            //    this.connect_btn.Enabled = true;
+            //    testftp();
+            //}
+        //    return "";
+        //} 
+
+        private string ssh_conn_sftp(string ip, string root, string pass)
+        {
+            SFTP = new SFTPHelper(host_txt.Text, this.userName_txt.Text, this.pw_txt.Text);
+            SFTPHelper.traceHandler = this.Trace;
+            if (!SFTP.connect())
+            {
+
+                log_tb.AppendText("connect fail" + "\n");
+                this.connect_btn.Text = "连接";
+                this.connect_btn.Enabled = true;
+            }
+            else
+            {
+                log_tb.AppendText("connect ok" + "\n");
+
+                writeLoginInfo();
+                this.connect_btn.Text = "断开";
+                this.connect_btn.Enabled = true;
+                testftp();
+            }
+            return "";
+        }
         private void connect_btn_Click(object sender, EventArgs e)
         {
+            //"find / -name aa.txt"
+            //"rm -f /home/javauser/app/egame2.2/egameentrance/client/mayayl/game/json/config.json"
+            
+
             this.connect_btn.Enabled = false;
             if (this.connect_btn.Text == "连接")
             {
-                SFTP = new SFTPHelper(host_txt.Text, this.userName_txt.Text, this.pw_txt.Text);
-
-                if (!SFTP.Connect())
-                {
-                    log_tb.AppendText("connect fail" + "\n");
-                    this.connect_btn.Text = "连接";
-                    this.connect_btn.Enabled = true;
-                }
-                else
-                {
-                    log_tb.AppendText("connect ok" + "\n");
-                   
-                    writeLoginInfo();
-                    this.connect_btn.Text = "断开";
-                    this.connect_btn.Enabled = true;
-                    testftp();
-                }
+                ssh_conn_sftp(host_txt.Text, this.userName_txt.Text, this.pw_txt.Text);
             }
             else
             {
@@ -98,7 +136,9 @@ namespace 部署文件
             }
            
         }
-
+        /// <summary>
+        /// 登录成功后将登录信息记录到文本中
+        /// </summary>
         private void writeLoginInfo()
         {
             userinfo.host = host_txt.Text;
@@ -124,6 +164,9 @@ namespace 部署文件
             }
         }
         MyUserInfo userinfo = new MyUserInfo();
+        /// <summary>
+        /// 从记录中检索登录用户的信息;
+        /// </summary>
         private void checkLoginInfo()
         {
             write.TxtPath = PathManager.GetInstance().LoginINfoLog;
@@ -149,21 +192,34 @@ namespace 部署文件
             }
         }
 
-        private void testftp()
+        private void testftp(string commands = "")
         {
             userinfo.remotePath = this.remotePath_txt.Text;
-            userinfo.remotePath = userinfo.remotePath.Replace(@"\",@"/");
-            ArrayList objList = new ArrayList();
-            objList = SFTP.GetFileList(userinfo.remotePath + @"/mayayl/game/json/", @"json");
-            if (objList==null ||objList.Count <= 0)
+            userinfo.remotePath = userinfo.remotePath.Replace(@"\", @"/");
+            
+            if(commands=="")
             {
-                this.log_tb.AppendText("远程目录路径不正确" + "\n");
-                return;
-            }
-            foreach(var str in objList)
+                //string command = "find " + userinfo.remotePath + "/mayayl/game/json/" + " -name " + "config.json";
+                //SFTP.Shell("help");
+                //SFTP.Shell(command);//执行获取命令
+                //SFTP.Delete("/home/javauser/app/egame2.2/egameentrance/client/junbo/game/json/config.json");
+                //SFTP.Put("F:/workspace/EGameClient6_config/build/junbo/game/json/config.json", "/home/javauser/app/egame2.2/egameentrance/client/junbo/game/json/config.json");
+                // shell.Shell("dmidecode");//执行获取命令     
+            }else
             {
-                this.log_tb.AppendText(str + "\n");
+                //SFTP.Shell(commands);
             }
+
+            //string info = SFTP.GetAllString();//获取返回结果 
+            //Console.WriteLine("=====");
+            //Console.WriteLine(info);
+            //Console.WriteLine("=====");
+            // shell.Close();//关闭连接 
+            //if (info.Contains(@"没有那个文件或目录"))
+            //{
+            //    this.log_tb.AppendText("远程目录路径不正确" + "\n");
+            //    return;
+            //}
             
         }
         /// <summary>
@@ -181,15 +237,15 @@ namespace 部署文件
         /// </summary>
         private void closeConnect()
         {
-            if (SFTP!=null &&SFTP.Connected)
+            if (SFTP != null && SFTP.Connected)
             {
-                SFTP.Disconnect();
+                SFTP.close();
             }
         }
 
         private void upload_btn_Click(object sender, EventArgs e)
         {
-            if(SFTP == null||!SFTP.Connected)
+            if (SFTP == null || !SFTP.Connected)
             {
                 log_tb.AppendText("远程服务器已经断开..." + "\n");
                 return;
@@ -199,26 +255,28 @@ namespace 部署文件
             {
                 log_tb.AppendText("远程服务器上传目录地址不存在" + "\n");
             }
-           // SFTP.Delete(@"/home/javauser/app/egame2.2/egameentrance/client/mayayl/game/json/config.json"); 
+            // SFTP.Delete(@"/home/javauser/app/egame2.2/egameentrance/client/mayayl/game/json/config.json"); 
             List<string> list = getAllselectedList();
-            foreach(string line in list)
+            foreach (string line in list)
             {
                 string temppath = System.IO.Path.GetDirectoryName(line);
                 string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
-                // 注意传参时,\ 会变成\\, 从而导致上传不成功;
+
+                //k可以是\,也可以是/;当为\时,传值的时候会存在字符串变为 \\ 的现象
                 //开头一定是\开始
                 //结尾文件夹+\
-                remotepath = remotepath.Replace(@"\", @"/");
+                //put 返回的结果不一定准确,有时客户端显示正常传递,但实际没有传入,一般是因为 \\ 的原因;
+                remotepath = remotepath.Replace(@"\",@"/");
                 string templine = line.Replace(@"\", @"/");
                 if (SFTP.Put(templine, remotepath))
-                 {
-                     log_tb.AppendText("上传 " + remotepath  + " 成功" + "\n");
-                 }
-                 else
-                 {
-                     log_tb.AppendText("上传 " + remotepath  + " 失败" + "\n");
-                 };
-                
+                {
+                    log_tb.AppendText("上传 " + remotepath + " 成功" + "\n");
+                }
+                else
+                {
+                    log_tb.AppendText("上传 " + remotepath + " 失败" + "\n");
+                };
+
             }
         }
 
@@ -232,7 +290,7 @@ namespace 部署文件
             List<string> list = getAllselectedList();
             foreach (string line in list)
             {
-               // string temppath = System.IO.Path.GetDirectoryName(line);
+                // string temppath = System.IO.Path.GetDirectoryName(line);
                 string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
                 string tempstr = remotepath.Replace(@"/", @"\");
                 if (SFTP.Delete(tempstr))
@@ -248,28 +306,39 @@ namespace 部署文件
 
         private void get_btn_Click(object sender, EventArgs e)
         {
-            if (SFTP == null || !SFTP.Connected)
-            {
-                log_tb.AppendText("远程服务器已经断开..." + "\n");
-                return;
-            }
-            List<string> list = getAllselectedList();
-            foreach (string line in list)
-            {
-                string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
-                string tempstr = remotepath.Replace(@"/", @"\");
-                string localpath = line;//System.IO.Path.GetDirectoryName(line);
-                if (SFTP.Get(tempstr, localpath))
-                {
-                    log_tb.AppendText("获取 " + tempstr + " 成功" + "\n");
-                }
-                else
-                {
-                    log_tb.AppendText("获取 " + tempstr + " 失败" + "\n");
-                };
+            //if (SFTP == null || !SFTP.Connected)
+            //{
+            //    log_tb.AppendText("远程服务器已经断开..." + "\n");
+            //    return;
+            //}
+            //List<string> list = getAllselectedList();
+            //foreach (string line in list)
+            //{
+            //    string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
+            //    string tempstr = remotepath.Replace(@"/", @"\");
+            //    string localpath = line;//System.IO.Path.GetDirectoryName(line);
+            //    if (SFTP.Get(tempstr, localpath))
+            //    {
+            //        log_tb.AppendText("获取 " + tempstr + " 成功" + "\n");
+            //    }
+            //    else
+            //    {
+            //        log_tb.AppendText("获取 " + tempstr + " 失败" + "\n");
+            //    };
+            //}
+        }
+
+        private void comand_keydown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                testftp(this.command_txt.Text); 
             }
         }
 
+        private  void Trace(string str)
+        {
+            this.log_tb.AppendText(str);
+        }
         
     }
     struct MyUserInfo

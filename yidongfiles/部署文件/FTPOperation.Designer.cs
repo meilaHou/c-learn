@@ -43,6 +43,8 @@
             this.remotePath_txt = new System.Windows.Forms.TextBox();
             this.delete_btn = new System.Windows.Forms.Button();
             this.get_btn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.command_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // userName_txt
@@ -176,11 +178,32 @@
             this.get_btn.UseVisualStyleBackColor = true;
             this.get_btn.Click += new System.EventHandler(this.get_btn_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(326, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "command:";
+            this.label5.Visible = false;
+            // 
+            // command_txt
+            // 
+            this.command_txt.Location = new System.Drawing.Point(381, 10);
+            this.command_txt.Name = "command_txt";
+            this.command_txt.Size = new System.Drawing.Size(254, 21);
+            this.command_txt.TabIndex = 15;
+            this.command_txt.Visible = false;
+            this.command_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comand_keydown);
+            // 
             // FTPOperation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 572);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.command_txt);
             this.Controls.Add(this.get_btn);
             this.Controls.Add(this.delete_btn);
             this.Controls.Add(this.label4);
@@ -221,5 +244,7 @@
         private System.Windows.Forms.TextBox remotePath_txt;
         private System.Windows.Forms.Button delete_btn;
         private System.Windows.Forms.Button get_btn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox command_txt;
     }
 }
