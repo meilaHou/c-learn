@@ -126,5 +126,18 @@ namespace 部署文件
             sshCp.Close();
             Connected = false;
         }
+
+        internal bool Get(string tempstr, string localpath)
+        {
+            try
+            {
+            sshCp.Get(tempstr, localpath);
+                return true;
+            }catch
+            {
+               return false;
+            }
+
+        }
     }
 }

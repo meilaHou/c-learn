@@ -73,27 +73,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+rlibWOxGP6TXYQG19gJqIuR+SK4eu49FKfADBkP8kE=</dsig:DigestValue>
+        <dsig:DigestValue>hg4ozeZpFQqykaKaZ0qBDZZtM8uUOTk4Mt7pFdBC+ZA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="47104">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="48640">
->>>>>>> develop
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="49152">
       <assemblyIdentity name="部署文件" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-        <dsig:DigestValue>nB6FJBBGx2uMZVqxuDY6IFxD5UhAQImtujdKfCn3dnM=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>MzkP8qOQt5BmZKXteVKS4D9E9nE8iPKlykRAlS8Lvlw=</dsig:DigestValue>
->>>>>>> develop
+        <dsig:DigestValue>gvoRHELRjiSd5VDY3DXkm1DnhDKYmKO5zccqXcjjNNE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

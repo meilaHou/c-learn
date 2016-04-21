@@ -306,26 +306,26 @@ namespace 部署文件
 
         private void get_btn_Click(object sender, EventArgs e)
         {
-            //if (SFTP == null || !SFTP.Connected)
-            //{
-            //    log_tb.AppendText("远程服务器已经断开..." + "\n");
-            //    return;
-            //}
-            //List<string> list = getAllselectedList();
-            //foreach (string line in list)
-            //{
-            //    string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
-            //    string tempstr = remotepath.Replace(@"/", @"\");
-            //    string localpath = line;//System.IO.Path.GetDirectoryName(line);
-            //    if (SFTP.Get(tempstr, localpath))
-            //    {
-            //        log_tb.AppendText("获取 " + tempstr + " 成功" + "\n");
-            //    }
-            //    else
-            //    {
-            //        log_tb.AppendText("获取 " + tempstr + " 失败" + "\n");
-            //    };
-            //}
+            if (SFTP == null || !SFTP.Connected)
+            {
+                log_tb.AppendText("远程服务器已经断开..." + "\n");
+                return;
+            }
+            List<string> list = getAllselectedList();
+            foreach (string line in list)
+            {
+                string remotepath = userinfo.remotePath + line.Replace(PathManager.GetInstance().FtpPath, "");
+                string tempstr = remotepath.Replace(@"\", @"/");
+                string localpath = line;//System.IO.Path.GetDirectoryName(line);
+                if (SFTP.Get(tempstr, localpath))
+                {
+                    log_tb.AppendText("获取 " + tempstr + " 成功" + "\n");
+                }
+                else
+                {
+                    log_tb.AppendText("获取 " + tempstr + " 失败" + "\n");
+                };
+            }
         }
 
         private void comand_keydown(object sender, KeyEventArgs e)
