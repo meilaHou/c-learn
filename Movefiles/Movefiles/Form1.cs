@@ -20,7 +20,7 @@ namespace Movefiles
         { 
             InitializeComponent();
            // drawPanel();
-
+            
           
             temp();
         }
@@ -28,8 +28,9 @@ namespace Movefiles
 
 
         //测试用方法
-        private void temp()
+        public void temp()
         {
+            
            // // 测试数组
            // TestArr testarr = new TestArr();
            // testarr.testArr();
@@ -56,7 +57,8 @@ namespace Movefiles
             //测试循环访问目录树;
             testfiles();
         }
-
+        Parentcls str;
+        
         private void testfiles()
         {
             //RecursiveFileSearch.testmain();
@@ -78,7 +80,11 @@ namespace Movefiles
            // WriteTextFile wtest = new WriteTextFile();
            // wtest.writetest();
 
-            testString();
+            //testString();
+
+            Console.WriteLine("test::" + str is System.Nullable);
+
+           // Console.WriteLine(insd);
         }
 
         private void testString()
@@ -104,6 +110,7 @@ namespace Movefiles
             // Cause some events to be raised.
             c1.Update(57);
             r1.Update(7, 7);
+
         }
 
         private void testxuni()
@@ -145,7 +152,7 @@ namespace Movefiles
 
 
 
-
+        /*==============================*/
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
