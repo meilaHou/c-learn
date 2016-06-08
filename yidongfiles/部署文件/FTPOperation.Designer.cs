@@ -45,6 +45,9 @@
             this.get_btn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.command_txt = new System.Windows.Forms.TextBox();
+            this.mayabox = new System.Windows.Forms.CheckBox();
+            this.classicbox = new System.Windows.Forms.CheckBox();
+            this.junbobox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // userName_txt
@@ -197,11 +200,44 @@
             this.command_txt.Visible = false;
             this.command_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comand_keydown);
             // 
+            // mayabox
+            // 
+            this.mayabox.AutoSize = true;
+            this.mayabox.Location = new System.Drawing.Point(67, 314);
+            this.mayabox.Name = "mayabox";
+            this.mayabox.Size = new System.Drawing.Size(60, 16);
+            this.mayabox.TabIndex = 17;
+            this.mayabox.Text = "mayayl";
+            this.mayabox.UseVisualStyleBackColor = true;
+            // 
+            // classicbox
+            // 
+            this.classicbox.AutoSize = true;
+            this.classicbox.Location = new System.Drawing.Point(133, 314);
+            this.classicbox.Name = "classicbox";
+            this.classicbox.Size = new System.Drawing.Size(66, 16);
+            this.classicbox.TabIndex = 18;
+            this.classicbox.Text = "classic";
+            this.classicbox.UseVisualStyleBackColor = true;
+            // 
+            // junbobox
+            // 
+            this.junbobox.AutoSize = true;
+            this.junbobox.Location = new System.Drawing.Point(205, 315);
+            this.junbobox.Name = "junbobox";
+            this.junbobox.Size = new System.Drawing.Size(54, 16);
+            this.junbobox.TabIndex = 19;
+            this.junbobox.Text = "junbo";
+            this.junbobox.UseVisualStyleBackColor = true;
+            // 
             // FTPOperation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 572);
+            this.Controls.Add(this.junbobox);
+            this.Controls.Add(this.classicbox);
+            this.Controls.Add(this.mayabox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.command_txt);
             this.Controls.Add(this.get_btn);
@@ -246,5 +282,8 @@
         private System.Windows.Forms.Button get_btn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox command_txt;
+        private System.Windows.Forms.CheckBox mayabox;
+        private System.Windows.Forms.CheckBox classicbox;
+        private System.Windows.Forms.CheckBox junbobox;
     }
 }

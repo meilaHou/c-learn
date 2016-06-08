@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using utils.filetest;
-
+using 部署文件.modifile;
 namespace 部署文件
 {
     static class CopyFilesManger
@@ -331,7 +331,7 @@ namespace 部署文件
                         };
                     }
                 }
-            }//foreach
+            }//foreach end
             //copy 自动修改的config.json
 
             // string provider = "mayayl"
@@ -375,6 +375,14 @@ namespace 部署文件
             {
                 Log.trace("文件copy到 " + copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) + " 失败");
             };
+
+            //生成ftp中 版本文件Index.xml(打包文件操作和ftp 上传操作互不干扰)
+            copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.mayayl;
+            ModifyIndexXML.addIndexXml(copytargetbuild);
+            copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.classic;
+            ModifyIndexXML.addIndexXml(copytargetbuild);
+            copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.junbo;
+            ModifyIndexXML.addIndexXml(copytargetbuild);
         }
     
     

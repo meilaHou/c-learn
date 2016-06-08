@@ -5,3 +5,6 @@ F:\workspace\EGameClient6_config\build\junbo\game\Game.swf
 F:\workspace\EGameClient6_config\build\mayayl\game\json\config.json
 F:\workspace\EGameClient6_config\build\classic\game\json\config.json
 F:\workspace\EGameClient6_config\build\junbo\game\json\config.json
+F:\workspace\EGameClient6_config\build\mayayl\Index.xml
+F:\workspace\EGameClient6_config\build\classic\Index.xml
+F:\workspace\EGameClient6_config\build\junbo\Index.xml

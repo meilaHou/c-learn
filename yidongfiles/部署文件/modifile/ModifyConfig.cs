@@ -23,7 +23,7 @@ namespace 部署文件
          {
              List<string> templist = ChangedFilesManager.GetInstance().filePathList;
              Log.trace("=====修改config.json配置开始=====");
-            List<string> templist2;
+             int num = 0;
             foreach(var path in templist)
             {
                 if(path.Contains("Main.swf"))
@@ -57,10 +57,11 @@ namespace 部署文件
                 writefile.TxtPath = PathManager.GetInstance().ProgramPath + junboPath + configName;
                 isfox = writefile.replaceLineWithReg(re0 + re01 + re02 + re03 + re1 + re2 + re3 + re4 + re5, "\"" + filename + fileextension + "?t=" + currenttime);
                 Log.trace(junboPath + "    " + filename + fileextension + " " + (isfox?"成功":"失败"));
-                
+                num++;
                 
             }
-            
+            Log.trace("有 " + num + " 个文件修改");
+            num = 0;
          }
 
     }

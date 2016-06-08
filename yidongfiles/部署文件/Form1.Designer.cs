@@ -122,6 +122,7 @@
             this.autocheck_cb.TabIndex = 8;
             this.autocheck_cb.Text = "自动寻找";
             this.autocheck_cb.UseVisualStyleBackColor = true;
+            this.autocheck_cb.Visible = false;
             // 
             // start_btn
             // 
