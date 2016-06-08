@@ -1,5 +1,5 @@
 programPath:F:\workspace\EGameClient6
 ftpPath:F:\workspace\EGameClient6_config\build
-changePath:C:\Users\Administrator\Desktop\testcopy\changefile.txt
-copyPath:C:\Users\Administrator\Desktop\testcopy\copy
-versionTxt:123456
+changePath:F:\workspace\EGameClient6_config\changefile.txt
+copyPath:F:\workspace\EGameClient6_config\复制文件
+versionTxt:2.3.10.1606021659

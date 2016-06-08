@@ -1,9 +1,7 @@
-﻿以下文件需上传
-F:\workspace\EGameClient6_config\build\mayayl\game\resource\global\zh_cn\BlackJackLoading.swf
-F:\workspace\EGameClient6_config\build\classic\game\resource\global\zh_cn\BlackJackLoading.swf
-F:\workspace\EGameClient6_config\build\junbo\game\resource\global\zh_cn\BlackJackLoading.swf
+以下文件需上传
+F:\workspace\EGameClient6_config\build\mayayl\game\Game.swf
+F:\workspace\EGameClient6_config\build\classic\game\Game.swf
+F:\workspace\EGameClient6_config\build\junbo\game\Game.swf
 F:\workspace\EGameClient6_config\build\mayayl\game\json\config.json
 F:\workspace\EGameClient6_config\build\classic\game\json\config.json
 F:\workspace\EGameClient6_config\build\junbo\game\json\config.json
-
-http://localhost:47273/egame/images/loading_atlas_.json?1461750374027

@@ -32,7 +32,7 @@ namespace 部署文件
                 {
                     continue;
                 }
-                if (RecursiveFileSearch.copyFiles(copyresourcebuild + file, copytargetbuild+System.IO.Path.GetDirectoryName(file)))
+                if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild + file, copytargetbuild+System.IO.Path.GetDirectoryName(file)))
                 {
                     Log.trace("文件copy到 " + copytargetbuild + file + " 成功");
                 }
@@ -43,7 +43,7 @@ namespace 部署文件
             }
 
             //config.json在build目录中直接修改
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild + @"game\json\config.json", copytargetbuild + @"game\json\"))
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild + @"game\json\config.json", copytargetbuild + @"game\json\"))
             {
                 Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 成功");
             }
@@ -61,7 +61,7 @@ namespace 部署文件
             //创建文件夹
             string createDirect = @"C_" + DateTime.Now.ToString("yyMMddhhmm");
             copytargetbuild = PathManager.GetInstance().CopyPath;
-            RecursiveFileSearch.hasDirectory(copytargetbuild + @"\"+createDirect, true);
+            FilesAndDirsChangeManager.hasDirectory(copytargetbuild + @"\"+createDirect, true);
             ReadmeConfig.path = copytargetbuild + @"\"+createDirect;
             ReadmeConfig.addStartTitle();
             foreach (var file in templist)
@@ -76,7 +76,7 @@ namespace 部署文件
                     //};
                     copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\" + System.IO.Path.GetDirectoryName(file) + @"\" +System.IO.Path.GetFileNameWithoutExtension(file)+ @"-encrypt.swf";
                     copytargetbuild = PathManager.GetInstance().CopyPath +@"\"+ createDirect+@"\Game.swf" ;
-                    if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                    if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                     {
                         Log.trace("文件copy到 " + copytargetbuild  + " 成功");
                         ReadmeConfig.addConfig("Game.swf", @"/" + PathManager.mayayl + @"/game/");
@@ -92,8 +92,8 @@ namespace 部署文件
                 {
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\" + file;
                         copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect;
-                        RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect, true);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect, true);
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + @"\" + System.IO.Path.GetFileName(file) + " 成功");
                             
@@ -113,8 +113,8 @@ namespace 部署文件
                        
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\" + System.IO.Path.GetDirectoryName(file)+@"\"+ System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                         copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.mayayl + @"\" + System.IO.Path.GetFileName(file);
-                        RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.mayayl, true);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.mayayl, true);
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + " 成功");
                             ReadmeConfig.addConfig(PathManager.mayayl + @"/" + System.IO.Path.GetFileName(file), @"/" + PathManager.mayayl + @"/" + System.IO.Path.GetDirectoryName(file) + @"/");
@@ -125,10 +125,10 @@ namespace 部署文件
                         };
                         // string provider = "classic"
                         string findPath = PathManager.GetInstance().findPathByfile(System.IO.Path.GetFileName(file));
-                        RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.classic,true);
+                        FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.classic,true);
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\resource\fla\classic\mayal-20151210\" +findPath+@"\"+ System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                         copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.classic + @"\" + System.IO.Path.GetFileName(file);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + " 成功");
                             ReadmeConfig.addConfig(PathManager.classic + @"/" + System.IO.Path.GetFileName(file), @"/" + PathManager.classic + @"/" + System.IO.Path.GetDirectoryName(file) + @"/");
@@ -140,10 +140,10 @@ namespace 部署文件
 
                         // string provider = "junbo"
                         findPath = PathManager.GetInstance().findPathByfile(System.IO.Path.GetFileName(file));
-                        RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.junbo, true);
+                        FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.junbo, true);
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\resource\fla\classic\mayal-20151210\" + findPath + @"\" + System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                         copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.junbo + @"\" + System.IO.Path.GetFileName(file);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + " 成功");
                             ReadmeConfig.addConfig(PathManager.junbo + @"/" + System.IO.Path.GetFileName(file), @"/" + PathManager.junbo + @"/" + System.IO.Path.GetDirectoryName(file) + @"/");
@@ -163,8 +163,8 @@ namespace 部署文件
 
             copyresourcebuild = PathManager.GetInstance().ProgramPath +ModifyConfig.mayaPath+ModifyConfig.configName;
             copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.mayayl + @"\";
-            RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.mayayl, true);
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+            FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.mayayl, true);
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
             {
                 Log.trace("文件copy到 " + copytargetbuild +System.IO.Path.GetFileName(copyresourcebuild)+ " 成功");
                 ReadmeConfig.addConfig(PathManager.mayayl + @"/" + ModifyConfig.configName, @"/mayayl/game/json/");
@@ -176,8 +176,8 @@ namespace 部署文件
             // string provider = "classic"
             copyresourcebuild = PathManager.GetInstance().ProgramPath + ModifyConfig.classicPath + ModifyConfig.configName;
             copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.classic + @"\";
-            RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.classic, true);
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+            FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.classic, true);
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
             {
                 Log.trace("文件copy到 " + copytargetbuild  + System.IO.Path.GetFileName(copyresourcebuild) + " 成功");
                 ReadmeConfig.addConfig(PathManager.classic + @"/" + ModifyConfig.configName, @"/classic/game/json/");
@@ -191,8 +191,8 @@ namespace 部署文件
             // string provider = "junbo"
             copyresourcebuild = PathManager.GetInstance().ProgramPath + ModifyConfig.junboPath + ModifyConfig.configName;
             copytargetbuild = PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.junbo + @"\";
-            RecursiveFileSearch.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.junbo, true);
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+            FilesAndDirsChangeManager.hasDirectory(PathManager.GetInstance().CopyPath + @"\" + createDirect + @"\" + PathManager.junbo, true);
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
             {
                 Log.trace("文件copy到 " + copytargetbuild  + System.IO.Path.GetFileName(copyresourcebuild) + " 成功");
                 ReadmeConfig.addConfig(PathManager.junbo + @"/" + ModifyConfig.configName, @"/junbo/game/json/");
@@ -227,7 +227,7 @@ namespace 部署文件
                     copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\" + System.IO.Path.GetDirectoryName(file) + @"\" + System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                     copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.mayayl + @"\game\Game.swf";
                    // RecursiveFileSearch.hasDirectory(System.IO.Path.GetDirectoryName(copytargetbuild), true);
-                    if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                    if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                     {
                         Log.trace("文件copy到 " + copytargetbuild + " 成功");
                         Log.ftpLog(copytargetbuild );
@@ -239,7 +239,7 @@ namespace 部署文件
                     copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\" + System.IO.Path.GetDirectoryName(file) + @"\" + System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                     copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.classic + @"\game\Game.swf";
                    // RecursiveFileSearch.hasDirectory(System.IO.Path.GetDirectoryName(copytargetbuild), true);
-                    if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                    if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                     {
                         Log.trace("文件copy到 " + copytargetbuild + " 成功");
                         Log.ftpLog(copytargetbuild );
@@ -250,7 +250,7 @@ namespace 部署文件
                     };
                     copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.junbo + @"\game\Game.swf";
                    // RecursiveFileSearch.hasDirectory(System.IO.Path.GetDirectoryName(copytargetbuild), true);
-                    if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                    if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                     {
                         Log.trace("文件copy到 " + copytargetbuild + " 成功");
                         Log.ftpLog(copytargetbuild );
@@ -269,7 +269,7 @@ namespace 部署文件
                             copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\" + file;
                             copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + str + @"\" + System.IO.Path.GetDirectoryName(file);
                     //        RecursiveFileSearch.hasDirectory(copytargetbuild, true);
-                            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                             {
                                 Log.trace("文件copy到 " + copytargetbuild + @"\" + System.IO.Path.GetFileName(file) + " 成功");
                                 Log.ftpLog(copytargetbuild + @"\" + System.IO.Path.GetFileName(file) );
@@ -291,7 +291,7 @@ namespace 部署文件
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\" + System.IO.Path.GetDirectoryName(file) + @"\" + System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                         copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.mayayl + @"\" + file;
                     //    RecursiveFileSearch.hasDirectory(System.IO.Path.GetDirectoryName(copytargetbuild), true);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + " 成功");
                             Log.ftpLog(copytargetbuild );
@@ -305,7 +305,7 @@ namespace 部署文件
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\resource\fla\classic\mayal-20151210\" + findPath + @"\" + System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                         copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.classic + @"\" + file;
                     //    RecursiveFileSearch.hasDirectory(System.IO.Path.GetDirectoryName(copytargetbuild), true);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + " 成功");
                             Log.ftpLog(copytargetbuild );
@@ -320,7 +320,7 @@ namespace 部署文件
                         copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\resource\fla\classic\mayal-20151210\" + findPath + @"\" + System.IO.Path.GetFileNameWithoutExtension(file) + @"-encrypt.swf";
                         copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.junbo + @"\" + file;
                     //    RecursiveFileSearch.hasDirectory(System.IO.Path.GetDirectoryName(copytargetbuild), true);
-                        if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+                        if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
                         {
                             Log.trace("文件copy到 " + copytargetbuild + " 成功");
                             Log.ftpLog(copytargetbuild );
@@ -339,7 +339,7 @@ namespace 部署文件
             copyresourcebuild = PathManager.GetInstance().ProgramPath + ModifyConfig.mayaPath + ModifyConfig.configName;
             copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.mayayl + @"\game\json";
           //  RecursiveFileSearch.hasDirectory(copytargetbuild, true);
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
             {
                 Log.trace("文件copy到 " + copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) + " 成功");
                 Log.ftpLog(copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) );
@@ -352,7 +352,7 @@ namespace 部署文件
             copyresourcebuild = PathManager.GetInstance().ProgramPath + ModifyConfig.classicPath + ModifyConfig.configName;
             copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.classic + @"\game\json";
           //  RecursiveFileSearch.hasDirectory(copytargetbuild, true);
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
             {
                 Log.trace("文件copy到 " + copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) + " 成功");
                 Log.ftpLog(copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) );
@@ -366,7 +366,7 @@ namespace 部署文件
             copyresourcebuild = PathManager.GetInstance().ProgramPath + ModifyConfig.junboPath + ModifyConfig.configName;
             copytargetbuild = PathManager.GetInstance().FtpPath + @"\" + PathManager.junbo + @"\game\json";
          //   RecursiveFileSearch.hasDirectory(copytargetbuild, true);
-            if (RecursiveFileSearch.copyFiles(copyresourcebuild, copytargetbuild))
+            if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild))
             {
                 Log.trace("文件copy到 " + copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) + " 成功");
                 Log.ftpLog(copytargetbuild + @"\" + System.IO.Path.GetFileName(copyresourcebuild) );

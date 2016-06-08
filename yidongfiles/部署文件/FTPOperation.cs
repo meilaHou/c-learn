@@ -17,7 +17,7 @@ namespace 部署文件
     {
         private List<string> filelist;
        // private SFTPHelper SFTP;
-        WriteTextFile write = new WriteTextFile();
+        FileTextChangeManager write = new FileTextChangeManager();
         public FTPOperation()
         {
             InitializeComponent();

@@ -9,9 +9,9 @@ using 部署文件;
 namespace utils.filetest
 {
    
-    class WriteTextFile
+    class FileTextChangeManager
     {
-        private static WriteTextFile instance;
+       // private static FileTextChangeManager instance;
         private String txtPath;
 
         public String TxtPath
@@ -19,11 +19,11 @@ namespace utils.filetest
             get { return txtPath; }
             set { txtPath = value; }
         }
-        public WriteTextFile()
+        public FileTextChangeManager()
         {
 
         }
-        public WriteTextFile(string path)
+        public FileTextChangeManager(string path)
         {
             txtPath = path;
         }
@@ -53,14 +53,14 @@ namespace utils.filetest
                 file.WriteLine("Fourth line");
             }
         }   
-        public static WriteTextFile GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new WriteTextFile();
-            }
-            return instance;
-        }
+        //public static FileTextChangeManager GetInstance()
+        //{
+        //    if (instance == null)
+        //    {
+        //        instance = new FileTextChangeManager();
+        //    }
+        //    return instance;
+        //}
         public void delLineText(string matchStr)
         {
             List<string> strlist = readAllLine();

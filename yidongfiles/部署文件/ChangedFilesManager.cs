@@ -9,13 +9,13 @@ namespace 部署文件
 {
     class ChangedFilesManager
     {
-        private WriteTextFile autopathwrite;
+        private FileTextChangeManager autopathwrite;
         public static ChangedFilesManager instance;
         public List<string> filePathList;
        // private string filename = "changefile.txt";
         public ChangedFilesManager()
         {
-            autopathwrite = new WriteTextFile(PathManager.GetInstance().ChangePath);
+            autopathwrite = new FileTextChangeManager(PathManager.GetInstance().ChangePath);
             filePathList = autopathwrite.readAllLine();
         }
         public static ChangedFilesManager GetInstance()

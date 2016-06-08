@@ -26,7 +26,7 @@ namespace 部署文件
         internal static void warn(string str)
         {
             string logpath = PathManager.GetInstance().LogPath;
-            WriteTextFile write = new WriteTextFile(logpath);
+            FileTextChangeManager write = new FileTextChangeManager(logpath);
             if (isFirstLog)
             {
                 isFirstLog = false;
@@ -39,7 +39,7 @@ namespace 部署文件
         public static void ftpLog(string str)
         {
             string logpath = PathManager.GetInstance().FtpLogPath;
-            WriteTextFile write = new WriteTextFile(logpath);
+            FileTextChangeManager write = new FileTextChangeManager(logpath);
             if (isFirstFtpLog)
             {
                 isFirstFtpLog = false;

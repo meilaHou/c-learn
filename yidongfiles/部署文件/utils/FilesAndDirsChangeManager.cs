@@ -8,7 +8,7 @@ using 部署文件;
 namespace utils.filetest
 {
 
-    public class RecursiveFileSearch
+    public class FilesAndDirsChangeManager
     {
         static System.Collections.Specialized.StringCollection log = new System.Collections.Specialized.StringCollection();
         public static string currentDirPath;

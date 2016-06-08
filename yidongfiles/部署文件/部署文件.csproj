@@ -121,8 +121,8 @@
     </Compile>
     <Compile Include="utils\FileProgress.cs" />
     <Compile Include="utils\ReadFromFile.cs" />
-    <Compile Include="utils\RecursiveFileSearch.cs" />
-    <Compile Include="utils\WriteTextFile.cs" />
+    <Compile Include="utils\FilesAndDirsChangeManager.cs" />
+    <Compile Include="utils\FileTextChangeManager.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

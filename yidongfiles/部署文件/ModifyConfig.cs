@@ -14,10 +14,10 @@ namespace 部署文件
          public static string  junboPath = @"/build/junbo/";
          public static string mayaPath = @"/build/mayayl/game/json/";
          public static String debugPath = @"/bin-debug/game/json/";
-         private WriteTextFile writefile;
+         private FileTextChangeManager writefile;
         public ModifyConfig()
          {
-             writefile = new WriteTextFile();
+             writefile = new FileTextChangeManager();
          }
         public void changeFilesTime()
          {

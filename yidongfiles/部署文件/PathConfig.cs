@@ -11,15 +11,29 @@ namespace 部署文件
     {
         private static PathManager instance;
         private string programPath;
+        private string shuomingPath;
+
+        public string ShuomingPath
+        {
+            get {
+                if (shuomingPath == null) {
+                    shuomingPath = @"./egameCopyConfig/shuoming.txt";
+                }
+                return shuomingPath;
+            }
+            set { shuomingPath = value; }
+        }
         private string ftpPath;
         private string logPath;
         private string ftpLog;
         private string loginINfoLog;
-
+        /// <summary>
+        /// ftp登录的账号密码
+        /// </summary>
         public string LoginINfoLog
         {
             get {
-                RecursiveFileSearch.hasSomeFile(@"./egameCopyConfig/ftpLoginInfo.txt", true);
+                FilesAndDirsChangeManager.hasSomeFile(@"./egameCopyConfig/ftpLoginInfo.txt", true);
                 logPath = @"./egameCopyConfig/ftpLoginInfo.txt";
                 loginINfoLog = logPath;
                 return loginINfoLog;
@@ -28,11 +42,13 @@ namespace 部署文件
         }
         private string versionTxt;
 
-       
+       /// <summary>
+       /// ftp上传的日志
+       /// </summary>
         public string FtpLogPath
         {
             get {
-                RecursiveFileSearch.hasSomeFile(@"./egameCopyConfig/ftpLog.txt", true);
+                FilesAndDirsChangeManager.hasSomeFile(@"./egameCopyConfig/ftpLog.txt", true);
                 logPath = @"./egameCopyConfig/ftpLog.txt";
                 ftpLog = logPath;
                 return logPath;
@@ -43,13 +59,13 @@ namespace 部署文件
         public string LogPath
         {
             get {
-                RecursiveFileSearch.hasSomeFile(@"./egameCopyConfig/log.txt", true);
+                FilesAndDirsChangeManager.hasSomeFile(@"./egameCopyConfig/log.txt", true);
                 logPath = @"./egameCopyConfig/log.txt";
                 return logPath;
             }
             set { }
         }
-        private WriteTextFile autopathwrite;
+        private FileTextChangeManager autopathwrite;
         public  const string classic = "classic";
         public  const string junbo = "junbo";
         public  const string mayayl = "mayayl";
@@ -150,9 +166,9 @@ namespace 部署文件
         {
             if (autopathwrite==null)
             {
-                autopathwrite = new WriteTextFile(@"./egameCopyConfig/autopath.txt");
+                autopathwrite = new FileTextChangeManager(@"./egameCopyConfig/autopath.txt");
             }
-            RecursiveFileSearch.hasSomeFile(@"./egameCopyConfig/autopath.txt", true);
+            FilesAndDirsChangeManager.hasSomeFile(@"./egameCopyConfig/autopath.txt", true);
 
         }
         public string ProgramPath

@@ -1,0 +1,54 @@
+﻿=====路径填写说明=====
+项目路径: flash builder 构建项目路径
+ftp路径:与ftp拉取时创建的本地ftp路径
+copy路径:生成提供给供应商打包文件的路径
+修改存档路径:一个记录项目中修改到的文件的路径的txt格式文本
+项目版本:此次打包的项目的版本号
+
+=====项目要求=====
+1.main.swf 默认调试路径为bin-debug中
+2.项目的文件路径与github中的完全一致
+3.从ftp拉下来的文件目录结构需要与ftp上的路径完全一致
+4.fla发布路径,
+github 项目中/resource/fla/mayayl/中的fla发布路径指向bin-debug中的对应路径;
+(以mayayl中的资源作为编码并测试版本)
+classic junbo 代理:resource\fla\classic\mayal-20151210 中的fla指向fla同级目录
+
+=====流程=====
+1.修改项目内容,包含fla的修改及发布,main.swf的发布版本,各供应商配置文件的内容修改,
+不需要修改资源的更改日期,工具会自动生成
+2.将需要加密的文件加密,不需要重命名,工具会自动命名
+3.在记录修改文件的文本中添加修改的文件路径,格式如下
+game\resource\global\zh_cn\BlackJackLoading.swf
+game\resource\global\zh_cn\Locale.xml
+game\plugin\dealer\dealerA.swf
+bin-release\Main.swf
+
+config.json
+有多个不同供应商版本,不需要添加config,但需要保持各config路径与github中一致
+config文件在添加新的内容时要手动添加到所有的config.json中;
+3.打开工具,首次运行填写各文件目录,点击开始,执行完毕后,在log.txt中查看日志和ftp中需要上传文件的路径
+
+=====生成配置说明=====
+生成的配置文件保存在egameCopyConfig与exe同目录,
+filedate.txt:保存项目所有文件的修改日期
+autopath.txt:保存填写的各种路径
+ftpLog.txt:保存即将上传到ftp的所有文件的路径
+log.txt:一些日志信息
+
+=======文件生成和拷贝规则=========
+1.生成copy文件目录的规则
+读取changefile.txt 中修改的文件目录
+swf:如果没有加密文件-encrypt.swf,那么swf复制失败
+xml:如果文件不存在,copy失败;
+config.json 不管有没有修改,都会重新copy一份;
+其他配置文档也会重新生成;
+
+2.向ftp目录中复制文件
+swf:如果没有加密文件-encrypt.swf,那么swf复制失败
+xml:如果文件不存在,copy失败;
+config.json 不管有没有修改,都会重新copy一份;
+
+3.config.json文件修改
+在所有copy操作之前执行
+等修改完毕后,开始copy操作;

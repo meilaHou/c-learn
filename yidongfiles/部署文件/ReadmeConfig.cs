@@ -10,7 +10,7 @@ namespace 部署文件
     {
         public static string path = "";
         private static string filename = "README.md";
-        private static WriteTextFile write;
+        private static FileTextChangeManager write;
         public static void addConfig(string sourcePath,string targetPath)
         {
             
@@ -21,12 +21,12 @@ namespace 部署文件
         {
             if (write == null)//工具每次启动只执行一次
             {
-                write = new WriteTextFile();
+                write = new FileTextChangeManager();
             }
             addIndexXml();
 
             write.TxtPath = path + @"\" + filename;
-            if (!RecursiveFileSearch.hasSomeFile(write.TxtPath, true))
+            if (!FilesAndDirsChangeManager.hasSomeFile(write.TxtPath, true))
             {
                 write.addOneLine(@"## 步骤");
                 Log.trace("创建文件到 " + write.TxtPath + " 成功");
@@ -40,7 +40,7 @@ namespace 部署文件
 
         private static void addIndexXml()
         {
-            if (!RecursiveFileSearch.hasSomeFile(path + @"/Index.xml", true))
+            if (!FilesAndDirsChangeManager.hasSomeFile(path + @"/Index.xml", true))
             {
                 write.TxtPath = path + @"/Index.xml";
                 string p = @"<?xml version=""1.0"" encoding=""utf-8""?>
