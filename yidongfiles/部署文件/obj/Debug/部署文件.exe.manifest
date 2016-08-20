@@ -54,6 +54,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.SharpZipLib.dll" size="188416">
+      <assemblyIdentity name="ICSharpCode.SharpZipLib" version="0.85.4.369" publicKeyToken="1B03E6ACF1164F73" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>tMuhfhEjMzNWv36Aog463/2OwzXBTaGiSdGxDz18/Qs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Org.Mentalis.Security.dll" size="184320">
       <assemblyIdentity name="Org.Mentalis.Security" version="1.0.13.715" language="neutral" />
       <hash>
@@ -78,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="48128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="部署文件.exe" size="60928">
       <assemblyIdentity name="部署文件" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XR/Phz4MjFQgPZdYFSUDO9wtSoB2W+LEcHYePo1kDrI=</dsig:DigestValue>
+        <dsig:DigestValue>kami9OD3D91Vx+RnO3ryyxOqLR9kHoNlwMAL+WoWGuk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -19,7 +19,7 @@ namespace 部署文件
         }
         public static void addStartTitle()
         {
-            if (write == null)//工具每次启动只执行一次
+            if (write == null)
             {
                 write = new FileTextChangeManager();
             }
@@ -28,6 +28,8 @@ namespace 部署文件
             write.TxtPath = path + @"\" + filename;
             if (!FilesAndDirsChangeManager.hasSomeFile(write.TxtPath, true))
             {
+                write.addOneLine(@"## 版本 (" + PathManager.GetInstance().VersionTxt + ")");
+                write.addOneLine(@"## 内测");
                 write.addOneLine(@"## 步骤");
                 Log.trace("创建文件到 " + write.TxtPath + " 成功");
             }

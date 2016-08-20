@@ -209,6 +209,7 @@
             this.mayabox.TabIndex = 17;
             this.mayabox.Text = "mayayl";
             this.mayabox.UseVisualStyleBackColor = true;
+            this.mayabox.Click += new System.EventHandler(this.selectOtherClickHandler);
             // 
             // classicbox
             // 
@@ -219,6 +220,7 @@
             this.classicbox.TabIndex = 18;
             this.classicbox.Text = "classic";
             this.classicbox.UseVisualStyleBackColor = true;
+            this.classicbox.Click += new System.EventHandler(this.selectOtherClickHandler);
             // 
             // junbobox
             // 
@@ -229,6 +231,7 @@
             this.junbobox.TabIndex = 19;
             this.junbobox.Text = "junbo";
             this.junbobox.UseVisualStyleBackColor = true;
+            this.junbobox.Click += new System.EventHandler(this.selectOtherClickHandler);
             // 
             // FTPOperation
             // 

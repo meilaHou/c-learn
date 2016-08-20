@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="部署文件.exe.manifest" size="5345">
+    <dependentAssembly dependencyType="install" codebase="部署文件.exe.manifest" size="6047">
       <assemblyIdentity name="部署文件.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YPZM92i7GpUcnANWZZLQK+BhxNuKvRt8pheiAY8tRI4=</dsig:DigestValue>
+        <dsig:DigestValue>9F+uQL408wUoR7k3+CEnZEzO/GVjfVUzBAENsdI+dEU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

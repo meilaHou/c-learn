@@ -135,7 +135,9 @@ namespace 部署文件
                 }
             }
         }
-
+        /// <summary>
+        /// 项目版本号
+        /// </summary>
         public string VersionTxt
         {
             get {

@@ -1,4 +1,7 @@
 以下文件需上传
+F:\workspace\EGameClient6_config\build\mayayl\game\resource\global\zh_cn\CommonUI.swf
+F:\workspace\EGameClient6_config\build\classic\game\resource\global\zh_cn\CommonUI.swf
+F:\workspace\EGameClient6_config\build\junbo\game\resource\global\zh_cn\CommonUI.swf
 F:\workspace\EGameClient6_config\build\mayayl\game\Game.swf
 F:\workspace\EGameClient6_config\build\classic\game\Game.swf
 F:\workspace\EGameClient6_config\build\junbo\game\Game.swf

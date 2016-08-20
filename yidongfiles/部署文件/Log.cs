@@ -11,7 +11,7 @@ namespace 部署文件
     {
         public static RichTextBox textbox;
         private static bool isFirstLog = true;
-        private static bool isFirstFtpLog = true;
+        public static bool isFirstFtpLog = true;
         public static void trace(string str)
         {
             if (textbox == null)

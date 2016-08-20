@@ -339,8 +339,44 @@ namespace 部署文件
         {
             this.log_tb.AppendText(str);
         }
+
+        private void selectOtherClickHandler(object sender, EventArgs e)
+        {
+            CheckBox ddd =  sender as CheckBox;
+            selectOhterClick(ddd.Checked, ddd.Text); 
+        }
+        private void selectOhterClick(bool boolean,string type)
+        {
+            if (boolean)
+            {
+                for (int j = 0; j < filelistbox.Items.Count; j++)
+                {
+                    string tempstr = filelistbox.Items[j].ToString();
+                    if (tempstr.Contains(type))
+                    {
+                        filelistbox.SetItemChecked(j, true);
+
+                    }
+
+                }
+            }
+            else
+            {
+                for (int j = 0; j < filelistbox.Items.Count; j++)
+                {
+                    string tempstr = filelistbox.Items[j].ToString();
+                    if (tempstr.Contains(type))
+                    {
+                        filelistbox.SetItemChecked(j, false);
+                    }
+                }
+            }
+        }
+
         
     }
+
+    
     struct MyUserInfo
     {
         public string name;

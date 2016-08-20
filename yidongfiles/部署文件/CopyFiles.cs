@@ -24,10 +24,13 @@ namespace 部署文件
         public static void copyFilesToProgramBuild()
         {
             Log.trace("=====将修改文件copy到项目测试用文件中开始====");
-            copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\";
-            copytargetbuild = PathManager.GetInstance().ProgramPath + @"\build\mayayl\";
+            
             foreach(var file in templist)
             {
+
+                // string provider = "mayayl"
+                copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\";
+                copytargetbuild = PathManager.GetInstance().ProgramPath + @"\build\mayayl\";
                 if (file.Contains("Main.swf"))
                 {
                     continue;
@@ -40,9 +43,41 @@ namespace 部署文件
                 {
                     Log.trace("文件copy到 " + copytargetbuild + file + " 失败");
                 };
+                // string provider = "classic"
+                string findPath = PathManager.GetInstance().findPathByfile(System.IO.Path.GetFileName(file)) ;
+                
+                copytargetbuild = PathManager.GetInstance().ProgramPath + @"\build\classic\";
+
+                if (file.Contains("Main.swf"))
+                {//main.swf 不copy;
+                    continue;
+                }
+                else if (file.Contains(".xml"))
+                {
+                    //从bin-debug 中copy 配置文件
+                    copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\" + file;
+                }
+                else if (file.Contains(".swf"))
+                {
+                    copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\resource\fla\classic\mayal-20151210\" + findPath + @"\" + System.IO.Path.GetFileName(file);
+                }
+
+                if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild, copytargetbuild + System.IO.Path.GetDirectoryName(file)))
+                {
+                    Log.trace("文件copy到 " + copytargetbuild + file + " 成功");
+                }
+                else
+                {
+                    Log.trace("文件copy到 " + copytargetbuild + file + " 失败");
+                };
+                
             }
 
-            //config.json在build目录中直接修改
+            //config.json 每个代理商不同,所以在build中直接自动查找需要修改的内容进行修改;
+            //下面是mayayl的config.json,修改的是bin-debug中的config,所以要重新copy一下;
+            copyresourcebuild = PathManager.GetInstance().ProgramPath + @"\bin-debug\";
+            copytargetbuild = PathManager.GetInstance().ProgramPath + @"\build\mayayl\";
+
             if (FilesAndDirsChangeManager.copyFiles(copyresourcebuild + @"game\json\config.json", copytargetbuild + @"game\json\"))
             {
                 Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 成功");
@@ -52,12 +87,15 @@ namespace 部署文件
                 Log.trace("文件copy到 " + copytargetbuild + @"game\json\config.json" + " 失败");
             };
         }
+
+        
         /// <summary>
         /// 将修改的文件复制到文件整理目录中去
         /// </summary>
         public static void copyToPublish()
         {
             Log.trace("=====将修改文件copy到公布更新用文件中开始====");
+           
             //创建文件夹
             string createDirect = @"C_" + DateTime.Now.ToString("yyMMddhhmm");
             copytargetbuild = PathManager.GetInstance().CopyPath;
@@ -155,7 +193,6 @@ namespace 部署文件
                     }
                     
                 }
-              
             }
             //copy 自动修改的config.json
 
@@ -211,6 +248,8 @@ namespace 部署文件
         public static void copyFilesToftp()
         {
             Log.trace("=====将修改文件copy到ftp文件中开始====");
+            //每次ftp更新前,需要清理掉原有的日志;
+            Log.isFirstFtpLog = true;
             //创建文件夹
             copytargetbuild = PathManager.GetInstance().FtpPath;
            // RecursiveFileSearch.hasDirectory(copytargetbuild, true);

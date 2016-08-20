@@ -45,6 +45,11 @@
             this.createFiles_cb = new System.Windows.Forms.CheckBox();
             this.updateftp_cb = new System.Windows.Forms.CheckBox();
             this.ftpUpdate_btn = new System.Windows.Forms.Button();
+            this.checkgengxinBox = new System.Windows.Forms.CheckBox();
+            this.buildbox = new System.Windows.Forms.CheckBox();
+            this.zipbutton = new System.Windows.Forms.Button();
+            this.dabao_txt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +121,7 @@
             // autocheck_cb
             // 
             this.autocheck_cb.AutoSize = true;
-            this.autocheck_cb.Location = new System.Drawing.Point(573, 110);
+            this.autocheck_cb.Location = new System.Drawing.Point(573, 127);
             this.autocheck_cb.Name = "autocheck_cb";
             this.autocheck_cb.Size = new System.Drawing.Size(72, 16);
             this.autocheck_cb.TabIndex = 8;
@@ -126,7 +131,7 @@
             // 
             // start_btn
             // 
-            this.start_btn.Location = new System.Drawing.Point(677, 48);
+            this.start_btn.Location = new System.Drawing.Point(693, 48);
             this.start_btn.Name = "start_btn";
             this.start_btn.Size = new System.Drawing.Size(75, 23);
             this.start_btn.TabIndex = 9;
@@ -146,7 +151,7 @@
             // 
             // help_btn
             // 
-            this.help_btn.Location = new System.Drawing.Point(677, 14);
+            this.help_btn.Location = new System.Drawing.Point(693, 14);
             this.help_btn.Name = "help_btn";
             this.help_btn.Size = new System.Drawing.Size(75, 23);
             this.help_btn.TabIndex = 12;
@@ -173,7 +178,7 @@
             // createFiles_cb
             // 
             this.createFiles_cb.AutoSize = true;
-            this.createFiles_cb.Location = new System.Drawing.Point(573, 82);
+            this.createFiles_cb.Location = new System.Drawing.Point(573, 100);
             this.createFiles_cb.Name = "createFiles_cb";
             this.createFiles_cb.Size = new System.Drawing.Size(96, 16);
             this.createFiles_cb.TabIndex = 15;
@@ -183,7 +188,7 @@
             // updateftp_cb
             // 
             this.updateftp_cb.AutoSize = true;
-            this.updateftp_cb.Location = new System.Drawing.Point(573, 55);
+            this.updateftp_cb.Location = new System.Drawing.Point(573, 73);
             this.updateftp_cb.Name = "updateftp_cb";
             this.updateftp_cb.Size = new System.Drawing.Size(102, 16);
             this.updateftp_cb.TabIndex = 16;
@@ -192,7 +197,7 @@
             // 
             // ftpUpdate_btn
             // 
-            this.ftpUpdate_btn.Location = new System.Drawing.Point(677, 82);
+            this.ftpUpdate_btn.Location = new System.Drawing.Point(693, 82);
             this.ftpUpdate_btn.Name = "ftpUpdate_btn";
             this.ftpUpdate_btn.Size = new System.Drawing.Size(75, 23);
             this.ftpUpdate_btn.TabIndex = 17;
@@ -200,11 +205,62 @@
             this.ftpUpdate_btn.UseVisualStyleBackColor = true;
             this.ftpUpdate_btn.Click += new System.EventHandler(this.ftpUpdateClick);
             // 
+            // checkgengxinBox
+            // 
+            this.checkgengxinBox.AutoSize = true;
+            this.checkgengxinBox.Location = new System.Drawing.Point(573, 22);
+            this.checkgengxinBox.Name = "checkgengxinBox";
+            this.checkgengxinBox.Size = new System.Drawing.Size(96, 16);
+            this.checkgengxinBox.TabIndex = 18;
+            this.checkgengxinBox.Text = "重新生成配置";
+            this.checkgengxinBox.UseVisualStyleBackColor = true;
+            // 
+            // buildbox
+            // 
+            this.buildbox.AutoSize = true;
+            this.buildbox.Location = new System.Drawing.Point(573, 48);
+            this.buildbox.Name = "buildbox";
+            this.buildbox.Size = new System.Drawing.Size(114, 16);
+            this.buildbox.TabIndex = 19;
+            this.buildbox.Text = "更新到build目录";
+            this.buildbox.UseVisualStyleBackColor = true;
+            // 
+            // zipbutton
+            // 
+            this.zipbutton.Location = new System.Drawing.Point(684, 118);
+            this.zipbutton.Name = "zipbutton";
+            this.zipbutton.Size = new System.Drawing.Size(92, 23);
+            this.zipbutton.TabIndex = 20;
+            this.zipbutton.Text = "更新zip到ftp";
+            this.zipbutton.UseVisualStyleBackColor = true;
+            this.zipbutton.Click += new System.EventHandler(this.zipUpdateClick);
+            // 
+            // dabao_txt
+            // 
+            this.dabao_txt.Location = new System.Drawing.Point(95, 163);
+            this.dabao_txt.Name = "dabao_txt";
+            this.dabao_txt.Size = new System.Drawing.Size(457, 21);
+            this.dabao_txt.TabIndex = 22;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "打包版本";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 537);
+            this.Controls.Add(this.dabao_txt);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.zipbutton);
+            this.Controls.Add(this.buildbox);
+            this.Controls.Add(this.checkgengxinBox);
             this.Controls.Add(this.ftpUpdate_btn);
             this.Controls.Add(this.updateftp_cb);
             this.Controls.Add(this.createFiles_cb);
@@ -248,6 +304,11 @@
         private System.Windows.Forms.CheckBox createFiles_cb;
         private System.Windows.Forms.CheckBox updateftp_cb;
         private System.Windows.Forms.Button ftpUpdate_btn;
+        private System.Windows.Forms.CheckBox checkgengxinBox;
+        private System.Windows.Forms.CheckBox buildbox;
+        private System.Windows.Forms.Button zipbutton;
+        private System.Windows.Forms.TextBox dabao_txt;
+        private System.Windows.Forms.Label label6;
     }
 }
 

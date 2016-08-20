@@ -14,3 +14,4 @@ F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\部署文件.appli
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.exe.manifest
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\obj\Debug\部署文件.application
 F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\Tamir.SharpSSH.pdb
+F:\workspace\Ctest\c-learn\yidongfiles\部署文件\bin\Debug\ICSharpCode.SharpZipLib.dll

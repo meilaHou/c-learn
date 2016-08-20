@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 部署文件.utils;
 
 namespace 部署文件
 {
@@ -127,19 +128,29 @@ namespace 部署文件
                 Log.warn("项目版本不能为空");
                 return;
             }
-            modiConfig();
 
+            
             copyfiles();
             
         }
-
+        /// <summary>
+        /// 开始各种修改和文件操作
+        /// 按照一定顺序执行
+        /// 目标目录的文件来源都是从对应源文件中复制
+        /// </summary>
         private void copyfiles()
         {
-            CopyFilesManger.copyFilesToProgramBuild();
+            if (this.checkgengxinBox.Checked)
+            {
+                modiConfig();
+            }
+            if (this.buildbox.Checked)
+            {
+                CopyFilesManger.copyFilesToProgramBuild();
+            }
             if(this.createFiles_cb.Checked)
             {
                 CopyFilesManger.copyToPublish();
-
             }
             if(this.updateftp_cb.Checked)
             {
@@ -171,6 +182,45 @@ namespace 部署文件
                 ftppanel = new FTPOperation();
             }
             ftppanel.ShowDialog();
+        }
+        private  部署文件.utils.ZipClass zipUtils;
+        private void zipUpdateClick(object sender, EventArgs e)
+        {
+            if (zipUtils == null)
+            {
+                zipUtils = new utils.ZipClass();
+            }
+            if (this.dabao_txt.Text == "") {
+                if (MessageBox.Show("打包版本不能为空", "警告", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+            
+            string sourcePath = PathManager.GetInstance().CopyPath + @"\" + this.dabao_txt.Text;
+            string targetPath = PathManager.GetInstance().CopyPath + @"\" + this.dabao_txt.Text+@".zip";
+           zipUtils.ZipFileFromDirectory(sourcePath, targetPath, 9);
+            Log.trace(targetPath + " 创建成功");
+            connectFtp(targetPath);
+        }
+
+        private void connectFtp(string localpath) {
+            try {
+                FTPHelper ftphelper = new FTPHelper("114.119.40.123:9981", @"/client/", "javaftp", "hQaLbEzNh6eZinouoIrv");
+                if (ftphelper.Upload(localpath))
+                {
+                    Log.trace(localpath + " 上传成功");
+                }
+                else
+                {
+                    Log.trace(localpath + " 上传失败");
+                };
+            }
+            catch {
+                Log.trace("ftp连接失败");
+            }
+            
+            
         }
 
     }
